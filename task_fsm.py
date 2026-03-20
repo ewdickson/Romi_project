@@ -69,19 +69,30 @@ class task_fsm:
                  rightMotorGo):
         '''Initialize the FSM task with shared variables and control flags.'''
 
-        self.courseGo = courseGo    ''' Indicates whether the FSM should be active (go) or not (stop).'''
-        self.sL_meas = sL_meas      ''' Left wheel encoder measurement, used to track distance traveled by the left wheel.'''
-        self.sR_meas = sR_meas      ''' Right wheel encoder measurement, used to track distance traveled by the right wheel.'''
-        self.lineCorr = lineCorr    ''' Line correction signal, which is used in line-following states to adjust the wheel speeds based on the robot's position relative to the line.'''
-        self.steerGain = steerGain  ''' Steering gain, which can be adjusted to change how aggressively the robot steers in response to the line correction signal.'''
-        self.bumpFlag = bumpFlag    ''' Indicates whether the bump sensor has been triggered, used in the bump and recovery states.'''
-
-        self.fsmState = fsmState    ''' Current state of the FSM for monitoring or debugging purposes.'''
-        self.mode = mode            ''' Current mode of operation (stop, line follow, open loop) for use by other tasks that control the motors.'''
-        self.leftSetpoint = leftSetpoint    ''' Desired speed setpoint for the left motor, which is updated in each state based on the behavior required (e.g., line following, straight, turn).'''
-        self.rightSetpoint = rightSetpoint   ''' Desired speed setpoint for the right motor, similar to leftSetpoint.'''
-        self.leftMotorGo = leftMotorGo       ''' Flag to enable or disable the left motor, which is set to True when the FSM wants the left motor to run and False when it should stop.'''
-        self.rightMotorGo = rightMotorGo    ''' Flag to enable or disable the right motor, similar to leftMotorGo.'''
+        self.courseGo = courseGo    
+        ''' Indicates whether the FSM should be active (go) or not (stop).'''
+        self.sL_meas = sL_meas      
+        ''' Left wheel encoder measurement, used to track distance traveled by the left wheel.'''
+        self.sR_meas = sR_meas      
+        ''' Right wheel encoder measurement, used to track distance traveled by the right wheel.'''
+        self.lineCorr = lineCorr    
+        ''' Line correction signal, which is used in line-following states to adjust the wheel speeds based on the robot's position relative to the line.'''
+        self.steerGain = steerGain  
+        ''' Steering gain, which can be adjusted to change how aggressively the robot steers in response to the line correction signal.'''
+        self.bumpFlag = bumpFlag    
+        ''' Indicates whether the bump sensor has been triggered, used in the bump and recovery states.'''
+        self.fsmState = fsmState    
+        ''' Current state of the FSM for monitoring or debugging purposes.'''
+        self.mode = mode            
+        ''' Current mode of operation (stop, line follow, open loop) for use by other tasks that control the motors.'''
+        self.leftSetpoint = leftSetpoint    
+        ''' Desired speed setpoint for the left motor, which is updated in each state based on the behavior required (e.g., line following, straight, turn).'''
+        self.rightSetpoint = rightSetpoint   
+        ''' Desired speed setpoint for the right motor, similar to leftSetpoint.'''
+        self.leftMotorGo = leftMotorGo       
+        ''' Flag to enable or disable the left motor, which is set to True when the FSM wants the left motor to run and False when it should stop.'''
+        self.rightMotorGo = rightMotorGo    
+        ''' Flag to enable or disable the right motor, similar to leftMotorGo.'''
 
         self.state = S0_INIT
         self.state_entry = True # Flag to indicate first loop in a state (for init actions)
