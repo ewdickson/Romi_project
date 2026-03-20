@@ -44,7 +44,10 @@ copyright = '2026, Ethan Dickson, Kaitlyn Ould'
 author = 'Ethan Dickson, Kaitlyn Ould'
 release = '1.0'
 
-extensions = ['sphinx.ext.autodoc']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.githubpages',
+]
 
 autoclass_content = "both"
 
