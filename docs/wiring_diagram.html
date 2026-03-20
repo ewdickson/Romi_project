@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiring Diagram &mdash; ME405 Term Project 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Program Structure" href="program_structure.html" />
+    <link rel="prev" title="Inertial Measurement Unit (IMU)" href="imu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ME405 Term Project
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="hardware_design.html">Hardware Design</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="romi_chassis.html">Romi Platforms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_sensor.html">Line Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bump_sensor.html">Bump Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wiring Diagram</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pin-assignments">Pin Assignments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#motors">Motors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encoders">Encoders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#line-sensors">Line Sensors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#imu">IMU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bump-sensor">Bump Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-button">User Button</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#diagram">Diagram</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="program_structure.html">Program Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ME405 Term Project</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="hardware_design.html">Hardware Design</a></li>
+      <li class="breadcrumb-item active">Wiring Diagram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/wiring_diagram.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wiring-diagram">
+<h1>Wiring Diagram<a class="headerlink" href="#wiring-diagram" title="Link to this heading"></a></h1>
+<section id="pin-assignments">
+<h2>Pin Assignments<a class="headerlink" href="#pin-assignments" title="Link to this heading"></a></h2>
+<section id="motors">
+<h3>Motors<a class="headerlink" href="#motors" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.3%" />
+<col style="width: 28.6%" />
+<col style="width: 42.9%" />
+<col style="width: 14.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PC6</p></td>
+<td><p>TIM8_CH1 (PWM)</p></td>
+<td><p>Right motor PWM</p></td>
+<td><p>10 kHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>PA5</p></td>
+<td><p>GPIO</p></td>
+<td><p>Right motor direction</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>PB6</p></td>
+<td><p>GPIO</p></td>
+<td><p>Right motor enable (nSLP)</p></td>
+<td><p>Active low</p></td>
+</tr>
+<tr class="row-odd"><td><p>PC7</p></td>
+<td><p>TIM8_CH2 (PWM)</p></td>
+<td><p>Left motor PWM</p></td>
+<td><p>10 kHz</p></td>
+</tr>
+<tr class="row-even"><td><p>PB4</p></td>
+<td><p>GPIO</p></td>
+<td><p>Left motor direction</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>PB10</p></td>
+<td><p>GPIO</p></td>
+<td><p>Left motor enable (nSLP)</p></td>
+<td><p>Active low</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="encoders">
+<h3>Encoders<a class="headerlink" href="#encoders" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 33.3%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Timer Channel</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PA6</p></td>
+<td><p>TIM3_CH1</p></td>
+<td><p>Right encoder A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PA7</p></td>
+<td><p>TIM3_CH2</p></td>
+<td><p>Right encoder B</p></td>
+</tr>
+<tr class="row-even"><td><p>PA0</p></td>
+<td><p>TIM2_CH1</p></td>
+<td><p>Left encoder A</p></td>
+</tr>
+<tr class="row-odd"><td><p>PA1</p></td>
+<td><p>TIM2_CH2</p></td>
+<td><p>Left encoder B</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="line-sensors">
+<h3>Line Sensors<a class="headerlink" href="#line-sensors" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PA4</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>PB0</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 2</p></td>
+</tr>
+<tr class="row-even"><td><p>PB1</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>PC0</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 4</p></td>
+</tr>
+<tr class="row-even"><td><p>PC1</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>PC2</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 6</p></td>
+</tr>
+<tr class="row-even"><td><p>PC3</p></td>
+<td><p>ADC</p></td>
+<td><p>Sensor 7</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="imu">
+<h3>IMU<a class="headerlink" href="#imu" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 33.3%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Signal</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PB8</p></td>
+<td><p>I2C1_SCL</p></td>
+<td><p>Clock</p></td>
+</tr>
+<tr class="row-odd"><td><p>PB9</p></td>
+<td><p>I2C1_SDA</p></td>
+<td><p>Data</p></td>
+</tr>
+<tr class="row-even"><td><p>PA15</p></td>
+<td><p>GPIO</p></td>
+<td><p>IMU reset (active low)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="bump-sensor">
+<h3>Bump Sensor<a class="headerlink" href="#bump-sensor" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.4%" />
+<col style="width: 38.5%" />
+<col style="width: 46.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PC12</p></td>
+<td><p>EXTI (falling edge)</p></td>
+<td><p>Bump sensor</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="user-button">
+<h3>User Button<a class="headerlink" href="#user-button" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.4%" />
+<col style="width: 38.5%" />
+<col style="width: 46.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pin</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PC13</p></td>
+<td><p>EXTI (falling edge)</p></td>
+<td><p>Blue user button</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="diagram">
+<h2>Diagram<a class="headerlink" href="#diagram" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="_images/ME405_wiring.jpg"><img alt="Robot on the track" class="align-center" src="_images/ME405_wiring.jpg" style="width: 80%;" />
+</a>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="imu.html" class="btn btn-neutral float-left" title="Inertial Measurement Unit (IMU)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="program_structure.html" class="btn btn-neutral float-right" title="Program Structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Ethan Dickson, Kaitlyn Ould.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
