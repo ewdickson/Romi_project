@@ -4,7 +4,7 @@ Drivers
 Motor Driver
 ------------
 
-.. autoclass:: motor_driver.motor_driver
+.. automodule:: motor_driver
    :members:
    :special-members: __init__
    :show-inheritance:
@@ -12,7 +12,15 @@ Motor Driver
 Encoder Driver
 --------------
 
-.. autoclass:: encoder.encoder
+.. automodule:: motor_driver
+   :members:
+   :special-members: __init__
+   :show-inheritance:
+
+Encoder Driver
+--------------
+
+.. automodule:: encoder
    :members:
    :special-members: __init__
    :show-inheritance:

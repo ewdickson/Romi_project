@@ -47,11 +47,15 @@
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="program_structure.html">Program Structure</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Drivers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#motor-driver">Motor Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-motor_driver">Motor Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#motor_driver.motor_driver"><code class="docutils literal notranslate"><span class="pre">motor_driver</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#encoder-driver">Encoder Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-0">Encoder Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">motor_driver</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Encoder Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#encoder.encoder"><code class="docutils literal notranslate"><span class="pre">encoder</span></code></a></li>
 </ul>
 </li>
@@ -97,8 +101,8 @@
              
   <section id="drivers">
 <h1>Drivers<a class="headerlink" href="#drivers" title="Link to this heading"></a></h1>
-<section id="motor-driver">
-<h2>Motor Driver<a class="headerlink" href="#motor-driver" title="Link to this heading"></a></h2>
+<section id="module-motor_driver">
+<span id="motor-driver"></span><h2>Motor Driver<a class="headerlink" href="#module-motor_driver" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="motor_driver.motor_driver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motor_driver.</span></span><span class="sig-name descname"><span class="pre">motor_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PWM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nSLP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motor_driver.motor_driver" title="Link to this definition"></a></dt>
@@ -155,9 +159,67 @@ nSLP: Sleep-control pin used to enable or disable the driver.</p>
 </dd></dl>
 
 </section>
-<section id="encoder-driver">
-<h2>Encoder Driver<a class="headerlink" href="#encoder-driver" title="Link to this heading"></a></h2>
+<section id="module-0">
+<span id="encoder-driver"></span><h2>Encoder Driver<a class="headerlink" href="#module-0" title="Link to this heading"></a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motor_driver.</span></span><span class="sig-name descname"><span class="pre">motor_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PWM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nSLP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Driver for controlling a DC motor with PWM, direction, and sleep pins.</p>
+<p>Initialize the motor driver.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tim: Timer object used for PWM generation.
+chan: Timer channel number for PWM output.
+PWM: PWM pin connected to the motor driver.
+DIR: Direction-control pin.
+nSLP: Sleep-control pin used to enable or disable the driver.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PWM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nSLP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Initialize the motor driver.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>tim: Timer object used for PWM generation.
+chan: Timer channel number for PWM output.
+PWM: PWM pin connected to the motor driver.
+DIR: Direction-control pin.
+nSLP: Sleep-control pin used to enable or disable the driver.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Disables/puts to sleep a motor driver</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Enables/wakes up a motor driver</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">set_effort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">effort</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>Sets the effort of a motor driver</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>effort (float): The desired motor effort as a signed percentage</dt><dd><p>(+/- 100%)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="id5">
+<h2>Encoder Driver<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<dl class="py class" id="module-encoder">
 <dt class="sig sig-object py" id="encoder.encoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">encoder.</span></span><span class="sig-name descname"><span class="pre">encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chA_pin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chB_pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encoder.encoder" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
