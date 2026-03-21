@@ -17,38 +17,18 @@ Final Times
    * - 3
      - 1:05
 
-
-Demonstration Videos
---------------------
-
-Run 1
-~~~~~
+Demonstration Video
+-------------------
 
 .. raw:: html
 
-   <video width="560" controls>
-     <source src="_static/run1.mp4" type="video/mp4">
-   </video>
-
-
-Run 2
-~~~~~
-
-.. raw:: html
-
-   <video width="560" controls>
-     <source src="_static/run2.mp4" type="video/mp4">
-   </video>
-
-
-Run 3
-~~~~~
-
-.. raw:: html
-
-   <video width="560" controls>
-     <source src="_static/run3.mp4" type="video/mp4">
-   </video>
+   <iframe width="560" height="315"
+           src="https://www.youtube.com/embed/rkRKVH2O9PI"
+           title="Romi Time Trial Demonstration"
+           frameborder="0"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           allowfullscreen>
+   </iframe>
 
 Challenges and Lessons Learned
 ------------------------------

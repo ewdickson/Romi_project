@@ -47,23 +47,23 @@
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="program_structure.html">Program Structure</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Drivers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-motor_driver">Motor Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#motor-driver">Motor Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#motor_driver.motor_driver"><code class="docutils literal notranslate"><span class="pre">motor_driver</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-encoder">Encoder Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encoder-driver">Encoder Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#encoder.encoder"><code class="docutils literal notranslate"><span class="pre">encoder</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-linesensor">Line Sensor Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#line-sensor-driver">Line Sensor Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#linesensor.LineSensor"><code class="docutils literal notranslate"><span class="pre">LineSensor</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-imu_driver">IMU Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#imu-driver">IMU Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#imu_driver.BNO055"><code class="docutils literal notranslate"><span class="pre">BNO055</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-bumpsensor">Bump Sensor Driver</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bump-sensor-driver">Bump Sensor Driver</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#bumpsensor.BumpSensor"><code class="docutils literal notranslate"><span class="pre">BumpSensor</span></code></a></li>
 </ul>
 </li>
@@ -109,9 +109,22 @@
              
   <section id="drivers">
 <h1>Drivers<a class="headerlink" href="#drivers" title="Link to this heading"></a></h1>
-<section id="module-motor_driver">
-<span id="motor-driver"></span><h2>Motor Driver<a class="headerlink" href="#module-motor_driver" title="Link to this heading"></a></h2>
-<dl class="py class">
+<p>The driver files provide the low-level hardware interface layer for the project.
+Together, they handle communication with the Romi’s physical sensors and actuators,
+converting raw electrical signals and register-level device behavior into usable
+Python objects for the higher-level task code. This keeps the control tasks cleaner
+and more modular, since each task can work with meaningful quantities such as motor
+effort, wheel position, line position, heading, or bump events without needing to
+manage hardware details directly.</p>
+<section id="motor-driver">
+<h2>Motor Driver<a class="headerlink" href="#motor-driver" title="Link to this heading"></a></h2>
+<p>The motor driver file defines the interface used to command each drive motor on the
+Romi. It configures the PWM, direction, and sleep-control pins needed by the motor
+driver hardware, and provides methods to enable or disable the driver and to apply
+a signed effort command. This allows the rest of the control system to command wheel
+motion in a simple and consistent way without dealing directly with timer or pin-level
+behavior.</p>
+<dl class="py class" id="module-motor_driver">
 <dt class="sig sig-object py" id="motor_driver.motor_driver">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">motor_driver.</span></span><span class="sig-name descname"><span class="pre">motor_driver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PWM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DIR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nSLP</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#motor_driver.motor_driver" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -155,9 +168,14 @@ nSLP: Sleep-control pin used to enable or disable the driver.</p>
 </dd></dl>
 
 </section>
-<section id="module-encoder">
-<span id="encoder-driver"></span><h2>Encoder Driver<a class="headerlink" href="#module-encoder" title="Link to this heading"></a></h2>
-<dl class="py class">
+<section id="encoder-driver">
+<h2>Encoder Driver<a class="headerlink" href="#encoder-driver" title="Link to this heading"></a></h2>
+<p>The encoder driver file measures wheel motion using quadrature encoder feedback. It
+tracks encoder counts over time, converts them into position and velocity information,
+and provides the feedback needed for closed-loop motor control. By encapsulating the
+timer and count-update logic, it gives the motor task a clean source of motion data
+for estimating wheel speed and distance traveled.</p>
+<dl class="py class" id="module-encoder">
 <dt class="sig sig-object py" id="encoder.encoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">encoder.</span></span><span class="sig-name descname"><span class="pre">encoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chA_pin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chB_pin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#encoder.encoder" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -195,9 +213,15 @@ nSLP: Sleep-control pin used to enable or disable the driver.</p>
 </dd></dl>
 
 </section>
-<section id="module-linesensor">
-<span id="line-sensor-driver"></span><h2>Line Sensor Driver<a class="headerlink" href="#module-linesensor" title="Link to this heading"></a></h2>
-<dl class="py class">
+<section id="line-sensor-driver">
+<h2>Line Sensor Driver<a class="headerlink" href="#line-sensor-driver" title="Link to this heading"></a></h2>
+<p>The line sensor driver file reads the seven-element reflectance sensor array used
+for line following. It collects raw ADC values from each sensor, applies stored
+calibration limits, and computes normalized readings and a centroid value
+representing the detected line position. This makes it possible for the line-following
+task to turn sensor readings into a steering correction that keeps the robot aligned
+with the course.</p>
+<dl class="py class" id="module-linesensor">
 <dt class="sig sig-object py" id="linesensor.LineSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">linesensor.</span></span><span class="sig-name descname"><span class="pre">LineSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -252,9 +276,14 @@ no line is detected.</p>
 </dd></dl>
 
 </section>
-<section id="module-imu_driver">
-<span id="imu-driver"></span><h2>IMU Driver<a class="headerlink" href="#module-imu_driver" title="Link to this heading"></a></h2>
-<dl class="py class">
+<section id="imu-driver">
+<h2>IMU Driver<a class="headerlink" href="#imu-driver" title="Link to this heading"></a></h2>
+<p>The IMU driver file manages communication with the BNO055 inertial measurement unit
+over I2C. It handles sensor reset, operating mode changes, calibration data storage,
+and the reading of orientation and angular velocity values. In this project, it is
+used primarily to provide heading and yaw-rate measurements that support state
+estimation and observer-based tracking of the robot’s motion.</p>
+<dl class="py class" id="module-imu_driver">
 <dt class="sig sig-object py" id="imu_driver.BNO055">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imu_driver.</span></span><span class="sig-name descname"><span class="pre">BNO055</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i2c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -385,9 +414,15 @@ addr: I2C address of the BNO055.</p>
 </dd></dl>
 
 </section>
-<section id="module-bumpsensor">
-<span id="bump-sensor-driver"></span><h2>Bump Sensor Driver<a class="headerlink" href="#module-bumpsensor" title="Link to this heading"></a></h2>
-<dl class="py class">
+<section id="bump-sensor-driver">
+<h2>Bump Sensor Driver<a class="headerlink" href="#bump-sensor-driver" title="Link to this heading"></a></h2>
+<p>The bump sensor driver file provides a simple interrupt-based interface for the front
+bump switch. It configures the input pin and external interrupt so that a contact
+event is latched immediately when the bumper is triggered, then temporarily disables
+the interrupt to avoid repeated triggers from switch bounce. This gives the
+higher-level bump task a reliable event signal that can be used for obstacle handling
+and recovery behavior.</p>
+<dl class="py class" id="module-bumpsensor">
 <dt class="sig sig-object py" id="bumpsensor.BumpSensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bumpsensor.</span></span><span class="sig-name descname"><span class="pre">BumpSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bumpsensor.BumpSensor" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
