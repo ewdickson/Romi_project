@@ -5,52 +5,21 @@ import math
 
 # Defines state constants for the FSM.
 S0_INIT = 0
-'''Wait for start signal.'''
-
 S1_LF1 = 1
-'''First line-following segment.'''
-
 S2_LF2 = 2
-'''Slower curving line-following segment before turn.'''
-
 S3_LILCURVE = 3
-'''Small in-place heading adjustment.'''
-
 S4_STRAIGHT1 = 4
-'''Short straight segment.'''
-
 S5_RIGHT90 = 5
-'''In-place 90-degree right turn.'''
-
 S6_BUMP = 6
-'''Drive forward until bump detected.'''
-
 S7_RECOVER = 7
-'''Reverse away from obstacle.'''
-
 S8_LEFT90 = 8
-'''In-place 90-degree left turn.'''
-
 S9_STRAIGHT2 = 9
-'''Short straight recovery segment.'''
-
 S10_LF3 = 10
-'''Third line-following segment.'''
-
 S11_RIGHT45 = 11
-'''In-place 45-degree right turn.'''
-
 S12_LFPP = 12
-'''Final curving line-following section through slalom.'''
-
 S13_TURN180 = 13
-'''Near-180 in-place turn toward finish.'''
-
 S14_STRAIGHTFIN = 14
-'''Final straight drive to finish.'''
-
 S15_END = 15
-'''Stop and reset.'''
 
 # Defines 3 different modes that the FSM runs in.
 MODE_STOP = 0
@@ -159,7 +128,32 @@ class task_fsm:
         return float(self.sR_meas.get()) - self.start_sR
 
     def run(self): 
-        '''The main loop of the FSM task, which should be called repeatedly by the scheduler. It checks the current state, performs actions, and transitions between states based on sensor inputs and timing.'''
+        """
+        Run the finite state machine task.
+
+        This generator is called repeatedly by the scheduler. It updates motor
+        commands and transitions through the following states:
+
+        - S0_INIT: Wait for start signal.
+        - S1_LF1: First line-following segment.
+        - S2_LF2: Slower curvingline-following segment before turn.
+        - S3_LILCURVE: Small in-place heading adjustment.
+        - S4_STRAIGHT1: Short straight segment.
+        - S5_RIGHT90: In-place 90-degree right turn.
+        - S6_BUMP: Drive forward until bump detected.
+        - S7_RECOVER: Reverse away from obstacle.
+        - S8_LEFT90: In-place 90-degree left turn.
+        - S9_STRAIGHT2: Short straight recovery segment before continuing line following.
+        - S10_LF3: Third line-following segment.
+        - S11_RIGHT45: In-place 45-degree right turn to prepare for turn.
+        - S12_LFPP: Final slowed line-following section through curving slalom.
+        - S13_TURN180: Near 180-degree in-place turn toward finish.
+        - S14_STRAIGHTFIN: Final straight drive to finish.
+        - S15_END: Stop and reset.
+
+        Yields:
+        int: The current FSM state for cooperative scheduling.
+        """
         while True:
             # publish state
             self.fsmState.put(self.state)

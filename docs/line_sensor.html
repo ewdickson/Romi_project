@@ -48,7 +48,12 @@
 <li class="toctree-l2"><a class="reference internal" href="romi_chassis.html">Romi Platforms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="motors.html">Motors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Line Sensor</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Line Sensor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-justification">Sensor Justification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mounting">Mounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bump_sensor.html">Bump Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Measurement Unit (IMU)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wiring_diagram.html">Wiring Diagram</a></li>
@@ -85,12 +90,46 @@
              
   <section id="line-sensor">
 <h1>Line Sensor<a class="headerlink" href="#line-sensor" title="Link to this heading"></a></h1>
-<p>The chosen line sensor is a ** . It is an array of 7 infrared sensors spaced 8 mm from each other.
-The line sensor was mounted to the bottom front of the Romi chassis using screws and standoffs.
-With the array centered on the front, the line is detected “first” as Romi moves forward. The
-line sensor is very low to the ground, approximately ** , so that ** . We determined that given
-the thickness of the line,the span (**) and resolution (**) of the array was sufficient to
-navigate the track.</p>
+<p>Part of our strategy to complete the track is to follow large sections of the printed lines.
+To choose a line sensor, we first evaluated sensor type. We determined that analog reflectance
+sensors are the most effective option for this lab. Analog sensors provide continuous
+reflectance values, allowing smoother control and enabling proportional or PID-based
+line-following algorithms. Digital sensors require thresholding and provide less information,
+while serial-based sensors add unnecessary complexity and communication overhead. Therefore,
+analog sensors offer the best balance of simplicity and control performance.</p>
+<p>We then evaluated sensor interface, channel count and spacing, sensor height, channel crossover,
+and compatibility with expected line width to choose the specific device we would be working with.
+The sensor we selected for this project is the <a class="reference external" href="qtrx_sensor">Pololu QTRX-MD-07A Reflectance Sensor Array</a>. This is a 7-channel analog reflectance sensor with 8 mm spacing.</p>
+<section id="sensor-justification">
+<h2>Sensor Justification<a class="headerlink" href="#sensor-justification" title="Link to this heading"></a></h2>
+<p>We determined 7 channels is best for line tracking in this application, as it provides the
+ideal balance between increasing positional accuracy of the line but avoiding the law of
+diminishing return with the unnecessary minimal benefit of even more sensors. With multiple
+sensors, the robot can sense not just whether it is over the line, but where it is in relation to
+the line. The analog output of the sensor is weighted with the sensor position to determine the
+line’s offset from center. This offset will be used as error for setpoint control and result in
+decisions to go straight or turn. A spacing of 8mm is ideal, as this will allow the sensor to
+cover a range of 48 mm without redundant measurements, while also being close enough to avoid
+“blind spots”. A balance is needed between tight packing and broad spacing. This configuration
+enables robust line position estimation while maintaining sufficient sensitivity to detect sharp
+transitions and curves.</p>
+</section>
+<section id="mounting">
+<h2>Mounting<a class="headerlink" href="#mounting" title="Link to this heading"></a></h2>
+<p>We mounted the sensor to the bottom front of the Romi chassis using screws, nuts, and standoffs.
+The clearance from the ground was approximately 5mm, chosen out of convenience due to the heights
+of the accessible standoffs and verified through line sensor controller testing. This likely
+produced some crossover, which is desirable. Less crossover means more abrupt transitions as the
+line moves from one sensor to the next. Too much crossover reduces “spatial resolution” (i.e. most
+adjacent sensors reading the same thing). Moderate crossover increases this resolution while
+maintaining smooth transitions.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>The Pololu QTRX-MD-07A required 7 ADC-capable GPIO pins on the Nucleo (one for each sensor), as well as
++3.3V/GND. Each of the 7 pins on the Nucleo were configured as analog-to-digital (ADC) pins to
+receive analog output from the sensor. Below is a wiring diagram for the line sensor.</p>
+</section>
 </section>
 
 
