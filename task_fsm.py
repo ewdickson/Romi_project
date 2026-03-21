@@ -5,6 +5,7 @@ import math
 
 # Defines state constants for the FSM.
 S0_INIT = 0
+'''Fortnite'''
 S1_LF1 = 1
 S2_LF2 = 2
 S3_LILCURVE = 3
