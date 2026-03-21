@@ -26,6 +26,10 @@ MOCK_MODULES = [
 
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = MockModule()
+import types
+micropython_mock = types.SimpleNamespace()
+micropython_mock.native = lambda f: f
+sys.modules['micropython'] = micropython_mock
 
 import time
 time.ticks_us = MagicMock()
