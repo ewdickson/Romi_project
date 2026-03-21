@@ -1,13 +1,18 @@
-''' This file implements a "dummy" class to use in place of motor driver objects
-'''
 from pyb import Pin, Timer
 class motor_driver:
-    ''' A dummy class that can be instantiated inplace of motor driver objects
-    '''
-    
+    '''Driver for controlling a DC motor with PWM, direction, and sleep pins.'''  
     #def __init__(self):
     def __init__(self, tim, chan, PWM, DIR, nSLP):
-        ''' Initializes a motor driver object'''
+        """
+        Initialize the motor driver.
+
+        Args:
+            tim: Timer object used for PWM generation.
+            chan: Timer channel number for PWM output.
+            PWM: PWM pin connected to the motor driver.
+            DIR: Direction-control pin.
+            nSLP: Sleep-control pin used to enable or disable the driver.
+        """
         # print("Motor object instantiated")
         self.nSLP_pin = Pin(nSLP, mode=Pin.OUT_PP, value=0)
         self.DIR_pin  = Pin(DIR,  mode=Pin.OUT_PP)

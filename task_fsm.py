@@ -97,8 +97,10 @@ class task_fsm:
         self.state_entry = True 
         '''Flag to indicate first loop in a state (for init actions)'''
         self.start_sL = 0.0 
-        '''Initial wheel encoder readings (for distance tracking)'''
+        '''Initial left wheel encoder readings (for distance tracking)'''
         self.start_sR = 0.0
+        '''Initial right wheel encoder readings (for distance tracking)'''
+
         self.start_time = 0.0
 
     def _turn_wheel_arc_inplace(self, angle_deg):     
