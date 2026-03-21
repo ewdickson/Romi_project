@@ -1,4 +1,4 @@
-Motors & Encoders
+Motors and Encoders
 ===================
 
 The primary means of movement for Romi is through a differential drive 
