@@ -51,6 +51,10 @@
 <li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Finite State Machine Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task_fsm.task_fsm"><code class="docutils literal notranslate"><span class="pre">task_fsm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._capture_refs"><code class="docutils literal notranslate"><span class="pre">task_fsm._capture_refs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._dist_since_left"><code class="docutils literal notranslate"><span class="pre">task_fsm._dist_since_left()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._dist_since_right"><code class="docutils literal notranslate"><span class="pre">task_fsm._dist_since_right()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._turn_wheel_arc_inplace"><code class="docutils literal notranslate"><span class="pre">task_fsm._turn_wheel_arc_inplace()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.bumpFlag"><code class="docutils literal notranslate"><span class="pre">task_fsm.bumpFlag</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.courseGo"><code class="docutils literal notranslate"><span class="pre">task_fsm.courseGo</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.fsmState"><code class="docutils literal notranslate"><span class="pre">task_fsm.fsmState</span></code></a></li>
@@ -105,13 +109,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-task_fsm">
-<span id="finite-state-machine-task"></span><h1>Finite State Machine Task<a class="headerlink" href="#module-task_fsm" title="Link to this heading"></a></h1>
+  <section id="finite-state-machine-task">
+<h1>Finite State Machine Task<a class="headerlink" href="#finite-state-machine-task" title="Link to this heading"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="task_fsm.task_fsm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">task_fsm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCorr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steerGain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bumpFlag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsmState</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Finite-state-machine task that coordinates robot behavior.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="task_fsm.task_fsm._capture_refs">
+<span class="sig-name descname"><span class="pre">_capture_refs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm._capture_refs" title="Link to this definition"></a></dt>
+<dd><p>Capture current encoder readings and time to use as reference for distance-based transitions in the current state</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_fsm.task_fsm._dist_since_left">
+<span class="sig-name descname"><span class="pre">_dist_since_left</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm._dist_since_left" title="Link to this definition"></a></dt>
+<dd><p>Distance traveled by left wheel since _capture_refs() was called (positive forward, negative reverse)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_fsm.task_fsm._dist_since_right">
+<span class="sig-name descname"><span class="pre">_dist_since_right</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm._dist_since_right" title="Link to this definition"></a></dt>
+<dd><p>Distance traveled by right wheel since _capture_refs() was called (positive forward, negative reverse)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_fsm.task_fsm._turn_wheel_arc_inplace">
+<span class="sig-name descname"><span class="pre">_turn_wheel_arc_inplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_deg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm._turn_wheel_arc_inplace" title="Link to this definition"></a></dt>
+<dd><p>Arc length each wheel must travel for a given in-place rotation (about midpoint)</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="task_fsm.task_fsm.bumpFlag">
 <span class="sig-name descname"><span class="pre">bumpFlag</span></span><a class="headerlink" href="#task_fsm.task_fsm.bumpFlag" title="Link to this definition"></a></dt>

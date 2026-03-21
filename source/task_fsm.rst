@@ -1,6 +1,6 @@
 Finite State Machine Task
 =========================
-.. automodule:: task_fsm
+.. autoclass:: task_fsm.task_fsm
    :members:
-   :undoc-members:
+   :private-members:
    :show-inheritance:
