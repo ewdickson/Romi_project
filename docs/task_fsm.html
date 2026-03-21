@@ -51,6 +51,21 @@
 <li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Finite State Machine Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task_fsm.S0_INIT"><code class="docutils literal notranslate"><span class="pre">S0_INIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S10_LF3"><code class="docutils literal notranslate"><span class="pre">S10_LF3</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S11_RIGHT45"><code class="docutils literal notranslate"><span class="pre">S11_RIGHT45</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S12_LFPP"><code class="docutils literal notranslate"><span class="pre">S12_LFPP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S13_TURN180"><code class="docutils literal notranslate"><span class="pre">S13_TURN180</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S14_STRAIGHTFIN"><code class="docutils literal notranslate"><span class="pre">S14_STRAIGHTFIN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S15_END"><code class="docutils literal notranslate"><span class="pre">S15_END</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S1_LF1"><code class="docutils literal notranslate"><span class="pre">S1_LF1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S2_LF2"><code class="docutils literal notranslate"><span class="pre">S2_LF2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S3_LILCURVE"><code class="docutils literal notranslate"><span class="pre">S3_LILCURVE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S4_STRAIGHT1"><code class="docutils literal notranslate"><span class="pre">S4_STRAIGHT1</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S5_RIGHT90"><code class="docutils literal notranslate"><span class="pre">S5_RIGHT90</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S6_BUMP"><code class="docutils literal notranslate"><span class="pre">S6_BUMP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S7_RECOVER"><code class="docutils literal notranslate"><span class="pre">S7_RECOVER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S8_LEFT90"><code class="docutils literal notranslate"><span class="pre">S8_LEFT90</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task_fsm.S9_STRAIGHT2"><code class="docutils literal notranslate"><span class="pre">S9_STRAIGHT2</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task_fsm.task_fsm"><code class="docutils literal notranslate"><span class="pre">task_fsm</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.bumpFlag"><code class="docutils literal notranslate"><span class="pre">task_fsm.bumpFlag</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.courseGo"><code class="docutils literal notranslate"><span class="pre">task_fsm.courseGo</span></code></a></li>
@@ -111,14 +126,104 @@
 <dl class="py data">
 <dt class="sig sig-object py" id="task_fsm.S0_INIT">
 <span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S0_INIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#task_fsm.S0_INIT" title="Link to this definition"></a></dt>
-<dd><p>Fortnite</p>
+<dd><p>Wait for start signal.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S10_LF3">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S10_LF3</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#task_fsm.S10_LF3" title="Link to this definition"></a></dt>
+<dd><p>Third line-following segment.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S11_RIGHT45">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S11_RIGHT45</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#task_fsm.S11_RIGHT45" title="Link to this definition"></a></dt>
+<dd><p>In-place 45-degree right turn.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S12_LFPP">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S12_LFPP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#task_fsm.S12_LFPP" title="Link to this definition"></a></dt>
+<dd><p>Final curving line-following section through slalom.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S13_TURN180">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S13_TURN180</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#task_fsm.S13_TURN180" title="Link to this definition"></a></dt>
+<dd><p>Near-180 in-place turn toward finish.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S14_STRAIGHTFIN">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S14_STRAIGHTFIN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></em><a class="headerlink" href="#task_fsm.S14_STRAIGHTFIN" title="Link to this definition"></a></dt>
+<dd><p>Final straight drive to finish.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S15_END">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S15_END</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#task_fsm.S15_END" title="Link to this definition"></a></dt>
+<dd><p>Stop and reset.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S1_LF1">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S1_LF1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#task_fsm.S1_LF1" title="Link to this definition"></a></dt>
+<dd><p>First line-following segment.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S2_LF2">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S2_LF2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#task_fsm.S2_LF2" title="Link to this definition"></a></dt>
+<dd><p>Slower curving line-following segment before turn.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S3_LILCURVE">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S3_LILCURVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#task_fsm.S3_LILCURVE" title="Link to this definition"></a></dt>
+<dd><p>Small in-place heading adjustment.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S4_STRAIGHT1">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S4_STRAIGHT1</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#task_fsm.S4_STRAIGHT1" title="Link to this definition"></a></dt>
+<dd><p>Short straight segment.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S5_RIGHT90">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S5_RIGHT90</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#task_fsm.S5_RIGHT90" title="Link to this definition"></a></dt>
+<dd><p>In-place 90-degree right turn.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S6_BUMP">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S6_BUMP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#task_fsm.S6_BUMP" title="Link to this definition"></a></dt>
+<dd><p>Drive forward until bump detected.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S7_RECOVER">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S7_RECOVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#task_fsm.S7_RECOVER" title="Link to this definition"></a></dt>
+<dd><p>Reverse away from obstacle.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S8_LEFT90">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S8_LEFT90</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#task_fsm.S8_LEFT90" title="Link to this definition"></a></dt>
+<dd><p>In-place 90-degree left turn.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="task_fsm.S9_STRAIGHT2">
+<span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">S9_STRAIGHT2</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#task_fsm.S9_STRAIGHT2" title="Link to this definition"></a></dt>
+<dd><p>Short straight recovery segment.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="task_fsm.task_fsm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">task_fsm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCorr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steerGain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bumpFlag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsmState</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Finite-state-machine task that coordinates robot behavior live.</p>
+<p>Finite-state-machine task that coordinates robot behavior.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="task_fsm.task_fsm.bumpFlag">
 <span class="sig-name descname"><span class="pre">bumpFlag</span></span><a class="headerlink" href="#task_fsm.task_fsm.bumpFlag" title="Link to this definition"></a></dt>

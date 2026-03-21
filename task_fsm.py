@@ -5,22 +5,52 @@ import math
 
 # Defines state constants for the FSM.
 S0_INIT = 0
-'''Fortnite'''
+'''Wait for start signal.'''
+
 S1_LF1 = 1
+'''First line-following segment.'''
+
 S2_LF2 = 2
+'''Slower curving line-following segment before turn.'''
+
 S3_LILCURVE = 3
+'''Small in-place heading adjustment.'''
+
 S4_STRAIGHT1 = 4
+'''Short straight segment.'''
+
 S5_RIGHT90 = 5
+'''In-place 90-degree right turn.'''
+
 S6_BUMP = 6
+'''Drive forward until bump detected.'''
+
 S7_RECOVER = 7
+'''Reverse away from obstacle.'''
+
 S8_LEFT90 = 8
+'''In-place 90-degree left turn.'''
+
 S9_STRAIGHT2 = 9
+'''Short straight recovery segment.'''
+
 S10_LF3 = 10
+'''Third line-following segment.'''
+
 S11_RIGHT45 = 11
+'''In-place 45-degree right turn.'''
+
 S12_LFPP = 12
+'''Final curving line-following section through slalom.'''
+
 S13_TURN180 = 13
+'''Near-180 in-place turn toward finish.'''
+
 S14_STRAIGHTFIN = 14
+'''Final straight drive to finish.'''
+
 S15_END = 15
+'''Stop and reset.'''
 
 # Defines 3 different modes that the FSM runs in.
 MODE_STOP = 0
@@ -53,7 +83,7 @@ D_STRAIGHTFIN = 0.38
 
 # The task_fsm class encapsulates the finite state machine logic for controlling the robot's behavior.
 class task_fsm:
-    '''Finite-state-machine task that coordinates robot behavior live.'''
+    '''Finite-state-machine task that coordinates robot behavior.'''
 
     def __init__(self,
                  courseGo,
