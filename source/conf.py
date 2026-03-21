@@ -29,6 +29,7 @@ for mod_name in MOCK_MODULES:
 import types
 micropython_mock = types.SimpleNamespace()
 micropython_mock.native = lambda f: f
+micropython_mock.const = lambda x: x
 sys.modules['micropython'] = micropython_mock
 
 import time
