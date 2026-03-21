@@ -42,7 +42,7 @@ extensions = [
     'sphinx.ext.githubpages',
 ]
 
-autoclass_content = "both"
+autoclass_content = "class"
 
 autodoc_default_options = {
     'members': True,

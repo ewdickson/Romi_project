@@ -47,8 +47,7 @@ class motor_driver:
         ''' Sets the effort of a motor driver
         
         Args:
-            effort (float): The desired motor effort as a signed percentage
-                            (+/- 100%)
+            effort (float): The desired motor effort as a signed percentage (+/- 100%)
         '''
         try:
             eff = float(effort)
