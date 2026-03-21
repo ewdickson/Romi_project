@@ -56,6 +56,7 @@
 <li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Observer Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task_observer.task_observer"><code class="docutils literal notranslate"><span class="pre">task_observer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_observer.task_observer.__init__"><code class="docutils literal notranslate"><span class="pre">task_observer.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_observer.task_observer.run"><code class="docutils literal notranslate"><span class="pre">task_observer.run()</span></code></a></li>
 </ul>
 </li>
@@ -97,17 +98,38 @@
 <dt class="sig sig-object py" id="task_observer.task_observer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_observer.</span></span><span class="sig-name descname"><span class="pre">task_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_dot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bno055_cal.bin'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_observer.task_observer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Observer task that manages IMU calibration and publishes orientation data.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="task_observer.task_observer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_dot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bno055_cal.bin'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_observer.task_observer.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the observer task.</p>
 <dl class="simple">
-<dt>Observer task:</dt><dd><ul class="simple">
-<li><p>Handles IMU init + calibration load/save</p></li>
-<li><p>Each period: reads u and y, runs xhat update: xhat[k+1] = Ad*xhat[k] + Bd*z[k]</p></li>
-</ul>
+<dt>Args:</dt><dd><p>imu: BNO055 IMU driver object.
+uL: Share containing left motor input voltage estimate.
+uR: Share containing right motor input voltage estimate.
+sL: Share containing left wheel position measurement.
+sR: Share containing right wheel position measurement.
+psi: Share used to publish heading angle.
+psi_dot: Share used to publish yaw rate.
+leftMotorGo: Shared flag indicating left motor activity.
+rightMotorGo: Shared flag indicating right motor activity.
+cal_filename: Filename used to store IMU calibration data.</p>
 </dd>
 </dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="task_observer.task_observer.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_observer.task_observer.run" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Run one iteration of the observer task.</p>
+<p>This generator handles IMU startup and calibration during initialization,
+then reads heading and yaw-rate measurements during execution and publishes
+them to shared variables.</p>
+<dl class="simple">
+<dt>Yields:</dt><dd><p>int: The current state of the observer task.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

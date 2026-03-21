@@ -3,5 +3,5 @@ Observer Task
 
 .. automodule:: task_observer
    :members:
-   :undoc-members:
+   :special-members: __init__
    :show-inheritance:
