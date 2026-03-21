@@ -31,6 +31,12 @@ The system is composed of several key tasks:
 Each task operates independently but shares data through a centralized set of 
 Share objects, enabling modular and scalable system design.
 
+The following task diagram describes the shared variables between all of our tasks.
+
+.. image:: _static/taskdiagram.jpg
+   :width: 80%
+   :align: center
+   :alt: Task diagram
 
 Finite State Machine Navigation
 -------------------------------

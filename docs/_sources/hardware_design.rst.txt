@@ -1,6 +1,10 @@
 Hardware Design
 ===============
 
+This page contains information on all of the hardware used to build the Romi chassis and 
+enable it to interact with the track autonomously. Scroll through each subpage for
+details.
+
 .. image:: _static/romiparts.jpg
    :width: 80%
    :align: center
