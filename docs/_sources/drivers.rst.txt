@@ -4,15 +4,15 @@ Drivers
 Motor Driver
 ------------
 
-.. autoclass:: motor_driver
+.. autoclass:: motor_driver.motor_driver
    :members:
-   :undoc-members:
+   :special-members: __init__
    :show-inheritance:
 
 Encoder Driver
 --------------
 
-.. autoclass:: encoder
+.. autoclass:: encoder.encoder
    :members:
-   :undoc-members:
+   :special-members: __init__
    :show-inheritance:
