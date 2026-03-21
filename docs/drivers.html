@@ -55,6 +55,18 @@
 <li class="toctree-l4"><a class="reference internal" href="#encoder.encoder"><code class="docutils literal notranslate"><span class="pre">encoder</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-linesensor">Line Sensor Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linesensor.LineSensor"><code class="docutils literal notranslate"><span class="pre">LineSensor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-imu_driver">IMU Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#imu_driver.BNO055"><code class="docutils literal notranslate"><span class="pre">BNO055</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-bumpsensor">Bump Sensor Driver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bumpsensor.BumpSensor"><code class="docutils literal notranslate"><span class="pre">BumpSensor</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="main.html">Main</a></li>
@@ -178,6 +190,222 @@ nSLP: Sleep-control pin used to enable or disable the driver.</p>
 <dt class="sig sig-object py" id="encoder.encoder.zero">
 <span class="sig-name descname"><span class="pre">zero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#encoder.encoder.zero" title="Link to this definition"></a></dt>
 <dd><p>Resets encoder position to zero</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-linesensor">
+<span id="line-sensor-driver"></span><h2>Line Sensor Driver<a class="headerlink" href="#module-linesensor" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="linesensor.LineSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">linesensor.</span></span><span class="sig-name descname"><span class="pre">LineSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Driver for a seven-element analog line sensor array.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="linesensor.LineSensor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pins</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the line sensor with ADC pins and calibration values.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pins: Iterable of pin objects connected to the sensor outputs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="linesensor.LineSensor.calibrate_step">
+<span class="sig-name descname"><span class="pre">calibrate_step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor.calibrate_step" title="Link to this definition"></a></dt>
+<dd><p>Update stored minimum and maximum calibration values using one reading.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="linesensor.LineSensor.centroid">
+<span class="sig-name descname"><span class="pre">centroid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor.centroid" title="Link to this definition"></a></dt>
+<dd><p>Compute the weighted line position from the normalized sensor readings.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float | None: Estimated line position in millimeters, or None if
+no line is detected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="linesensor.LineSensor.read_norm">
+<span class="sig-name descname"><span class="pre">read_norm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor.read_norm" title="Link to this definition"></a></dt>
+<dd><p>Read normalized sensor values scaled between 0 and 1.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: Normalized sensor readings for the seven channels.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="linesensor.LineSensor.read_raw">
+<span class="sig-name descname"><span class="pre">read_raw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linesensor.LineSensor.read_raw" title="Link to this definition"></a></dt>
+<dd><p>Read the raw ADC values from all sensor channels.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: Raw sensor readings for the seven channels.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-imu_driver">
+<span id="imu-driver"></span><h2>IMU Driver<a class="headerlink" href="#module-imu_driver" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="imu_driver.BNO055">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">imu_driver.</span></span><span class="sig-name descname"><span class="pre">BNO055</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i2c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Driver for the BNO055 IMU using I2C communication.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imu_driver.BNO055.ADDR">
+<span class="sig-name descname"><span class="pre">ADDR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">40</span></em><a class="headerlink" href="#imu_driver.BNO055.ADDR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imu_driver.BNO055.CONFIG_MODE">
+<span class="sig-name descname"><span class="pre">CONFIG_MODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#imu_driver.BNO055.CONFIG_MODE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imu_driver.BNO055.IMU_MODE">
+<span class="sig-name descname"><span class="pre">IMU_MODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#imu_driver.BNO055.IMU_MODE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="imu_driver.BNO055.NDOF_MODE">
+<span class="sig-name descname"><span class="pre">NDOF_MODE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#imu_driver.BNO055.NDOF_MODE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i2c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the BNO055 sensor and place it in configuration mode.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>i2c: I2C bus object used to communicate with the sensor.
+addr: I2C address of the BNO055.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.calibration_status">
+<span class="sig-name descname"><span class="pre">calibration_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.calibration_status" title="Link to this definition"></a></dt>
+<dd><p>Read the current system and sensor calibration status.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: Calibration levels for system, gyro, accel, and mag.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.heading">
+<span class="sig-name descname"><span class="pre">heading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.heading" title="Link to this definition"></a></dt>
+<dd><p>Read the current heading angle.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: Heading in radians.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.mode" title="Link to this definition"></a></dt>
+<dd><p>Read the current operating mode.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>int: Current BNO055 operating mode value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.read_angular_velocity">
+<span class="sig-name descname"><span class="pre">read_angular_velocity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.read_angular_velocity" title="Link to this definition"></a></dt>
+<dd><p>Read angular velocity from the gyroscope.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: Angular velocity about x, y, and z axes in radians per second.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.read_calibration_coeffs">
+<span class="sig-name descname"><span class="pre">read_calibration_coeffs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.read_calibration_coeffs" title="Link to this definition"></a></dt>
+<dd><p>Read the stored calibration coefficient block from the sensor.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bytes: Calibration data blob.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.read_euler">
+<span class="sig-name descname"><span class="pre">read_euler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.read_euler" title="Link to this definition"></a></dt>
+<dd><p>Read Euler orientation angles from the IMU.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: Heading, roll, and pitch in radians.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.set_mode">
+<span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.set_mode" title="Link to this definition"></a></dt>
+<dd><p>Set the current BNO055 operating mode.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mode: One of the BNO055 operating mode constants.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.write_calibration_coeffs">
+<span class="sig-name descname"><span class="pre">write_calibration_coeffs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blob</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.write_calibration_coeffs" title="Link to this definition"></a></dt>
+<dd><p>Write a calibration coefficient block to the sensor.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>blob: 22-byte calibration data blob.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the calibration blob is not 22 bytes long.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="imu_driver.BNO055.yaw_rate">
+<span class="sig-name descname"><span class="pre">yaw_rate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imu_driver.BNO055.yaw_rate" title="Link to this definition"></a></dt>
+<dd><p>Read the angular velocity about the z-axis.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: Yaw rate in radians per second.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-bumpsensor">
+<span id="bump-sensor-driver"></span><h2>Bump Sensor Driver<a class="headerlink" href="#module-bumpsensor" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="bumpsensor.BumpSensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bumpsensor.</span></span><span class="sig-name descname"><span class="pre">BumpSensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bumpsensor.BumpSensor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Driver for an active-low bump sensor using an external interrupt.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bumpsensor.BumpSensor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pin_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bumpsensor.BumpSensor.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the bump sensor input and attach its interrupt handler.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pin_name: Pin connected to the bump sensor signal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bumpsensor.BumpSensor.rearm">
+<span class="sig-name descname"><span class="pre">rearm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bumpsensor.BumpSensor.rearm" title="Link to this definition"></a></dt>
+<dd><p>Re-enable the interrupt after a bump event has been handled.</p>
 </dd></dl>
 
 </dd></dl>

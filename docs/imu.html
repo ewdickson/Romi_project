@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inertial Measurement Unit (IMU) &mdash; ME405 Term Project 1.0 documentation</title>
+  <title>IMU and State Estimation &mdash; ME405 Term Project 1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
@@ -46,11 +46,17 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="hardware_design.html">Hardware Design</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="romi_chassis.html">Romi Platforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors &amp; Encoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="line_sensor.html">Line Sensor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bump_sensor.html">Bump Sensor</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">IMU and State Estimation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-justification">Sensor Justification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-estimation-approach">State Estimation Approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-decision-why-it-was-not-used">Design Decision (Why It Was Not Used)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mounting">Mounting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="wiring_diagram.html">Wiring Diagram</a></li>
 </ul>
 </li>
@@ -73,7 +79,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="hardware_design.html">Hardware Design</a></li>
-      <li class="breadcrumb-item active">Inertial Measurement Unit (IMU)</li>
+      <li class="breadcrumb-item active">IMU and State Estimation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/imu.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,11 +89,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="inertial-measurement-unit-imu">
-<h1>Inertial Measurement Unit (IMU)<a class="headerlink" href="#inertial-measurement-unit-imu" title="Link to this heading"></a></h1>
-<p>The inertial Measurement unit, or IMU, is a sensor that tracks acceleration, gyration, and magnetic
-field strength in three axes. We used this sensor in prior labs, but it ended up having no real
-role in our final strategy. This is due to instructor discouragement from state-estimation.</p>
+  <section id="imu-and-state-estimation">
+<h1>IMU and State Estimation<a class="headerlink" href="#imu-and-state-estimation" title="Link to this heading"></a></h1>
+<p>As part of the initial system design, we explored the use of an inertial measurement
+unit (IMU) to improve the robot’s ability to estimate its state during operation.
+In particular, the IMU was intended to provide measurements of heading and angular
+velocity that could be combined with encoder data and a dynamic model of the robot
+to produce a more accurate estimate of the system state. This approach is commonly
+used to reduce the effects of wheel slip and sensor noise in mobile robotics.</p>
+<p>The sensor selected for this purpose was the
+<a class="reference external" href="bno055_sensor">Bosch BNO055 Absolute Orientation Sensor</a>. The BNO055 is a
+9-degree-of-freedom (9-DoF) sensor that integrates an accelerometer, gyroscope,
+and magnetometer, along with an onboard microcontroller capable of performing
+real-time sensor fusion. This allows the device to output processed orientation
+data such as Euler angles and angular velocity directly, reducing the need for
+external computation.</p>
+<p>We developed a custom driver to interface with the BNO055 over I²C. The driver
+supports initialization, mode configuration, calibration data handling, and
+retrieval of key measurements such as heading and yaw rate. In parallel, we
+constructed a framework for a discrete-time observer intended to combine IMU
+data, encoder measurements, and motor inputs to estimate the robot’s state.</p>
+<section id="sensor-justification">
+<h2>Sensor Justification<a class="headerlink" href="#sensor-justification" title="Link to this heading"></a></h2>
+<p>The BNO055 was selected due to its ability to provide fused orientation data
+without requiring implementation of a full sensor fusion algorithm. Traditional
+IMUs require combining accelerometer, gyroscope, and magnetometer data through
+filters such as complementary or Kalman filters, which can be computationally
+expensive and complex to tune. The BNO055 performs this fusion internally,
+simplifying software development.</p>
+<p>Additionally, the sensor provides direct access to heading and angular velocity,
+which align well with the variables needed for state estimation. These measurements
+could be used to improve tracking of the robot’s orientation and motion, particularly
+in scenarios where encoder data alone may be insufficient due to slip or disturbances.</p>
+</section>
+<section id="state-estimation-approach">
+<h2>State Estimation Approach<a class="headerlink" href="#state-estimation-approach" title="Link to this heading"></a></h2>
+<p>We implemented the structure for a discrete-time observer using a linearized model
+of the robot derived from previous work. The observer was designed to combine motor
+inputs and sensor measurements into a unified estimate of the system state. This
+included provisions for matrix-based state updates, measurement incorporation, and
+eventual reconstruction of the robot’s position.</p>
+<p>However, while the framework for the observer was developed, the full state estimation
+algorithm was not completed. The matrix update equations and pose estimation logic
+were left commented out during testing, and the system was instead used primarily to
+stream IMU measurements such as heading and yaw rate.</p>
+</section>
+<section id="design-decision-why-it-was-not-used">
+<h2>Design Decision (Why It Was Not Used)<a class="headerlink" href="#design-decision-why-it-was-not-used" title="Link to this heading"></a></h2>
+<p>Although the IMU and observer framework were functional, state estimation was not
+used in the final project. The robot’s navigation strategy relied primarily on line
+following and discrete event-based behaviors, which were sufficiently robust when
+using line sensors and encoder feedback alone.</p>
+<p>Incorporating state estimation would have required additional effort in tuning the
+observer gain matrix and validating the model, with limited expected benefit for the
+given task. Given time constraints and the effectiveness of the existing control
+strategy, the added complexity was not justified.</p>
+<p>As a result, the final implementation prioritized simplicity and reliability, and the
+IMU was not used as part of the robot’s operational control.</p>
+</section>
+<section id="mounting">
+<h2>Mounting<a class="headerlink" href="#mounting" title="Link to this heading"></a></h2>
+<p>The IMU was mounted securely to the chassis using available mounting hardware, with
+care taken to align the sensor axes with the robot frame. Proper alignment is important
+to ensure that heading and angular velocity measurements correspond correctly to the
+robot’s motion.</p>
+</section>
+<section id="wiring">
+<h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
+<p>The BNO055 communicates with the Nucleo using the I²C protocol. The following
+connections were used:</p>
+<a class="reference internal image-reference" href="_static/imu_wiring.jpg"><img alt="Robot on the track" class="align-center" src="_static/imu_wiring.jpg" style="width: 80%;" />
+</a>
+<p>The Nucleo acts as the controller on the I²C bus, generating the clock signal and
+initiating communication, while the IMU responds as a peripheral device. This
+interface allows efficient communication while minimizing the number of required
+microcontroller pins.</p>
+</section>
 </section>
 
 

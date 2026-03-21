@@ -81,6 +81,8 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
@@ -90,15 +92,23 @@
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
  | <a href="#Z"><strong>Z</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="drivers.html#encoder.encoder.__init__">__init__() (encoder.encoder method)</a>
+      <li><a href="drivers.html#bumpsensor.BumpSensor.__init__">__init__() (bumpsensor.BumpSensor method)</a>
 
       <ul>
+        <li><a href="drivers.html#encoder.encoder.__init__">(encoder.encoder method)</a>
+</li>
+        <li><a href="drivers.html#imu_driver.BNO055.__init__">(imu_driver.BNO055 method)</a>
+</li>
+        <li><a href="drivers.html#linesensor.LineSensor.__init__">(linesensor.LineSensor method)</a>
+</li>
         <li><a href="drivers.html#motor_driver.motor_driver.__init__">(motor_driver.motor_driver method)</a>
 </li>
         <li><a href="task_fsm.html#task_fsm.task_fsm.__init__">(task_fsm.task_fsm method)</a>
@@ -126,6 +136,10 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.ADDR">ADDR (imu_driver.BNO055 attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_share.html#task_share.Queue.any">any() (task_share.Queue method)</a>
 </li>
   </ul></td>
@@ -136,9 +150,20 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_share.html#task_share.BaseShare">BaseShare (class in task_share)</a>
 </li>
+      <li><a href="drivers.html#imu_driver.BNO055">BNO055 (class in imu_driver)</a>
+</li>
+      <li><a href="task_fsm.html#task_fsm.task_fsm.bumpFlag">bumpFlag (task_fsm.task_fsm attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="task_fsm.html#task_fsm.task_fsm.bumpFlag">bumpFlag (task_fsm.task_fsm attribute)</a>
+      <li>
+    bumpsensor
+
+      <ul>
+        <li><a href="drivers.html#module-bumpsensor">module</a>
+</li>
+      </ul></li>
+      <li><a href="drivers.html#bumpsensor.BumpSensor">BumpSensor (class in bumpsensor)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -146,10 +171,18 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="task_share.html#task_share.Queue.clear">clear() (task_share.Queue method)</a>
+      <li><a href="drivers.html#linesensor.LineSensor.calibrate_step">calibrate_step() (linesensor.LineSensor method)</a>
+</li>
+      <li><a href="drivers.html#imu_driver.BNO055.calibration_status">calibration_status() (imu_driver.BNO055 method)</a>
+</li>
+      <li><a href="drivers.html#linesensor.LineSensor.centroid">centroid() (linesensor.LineSensor method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="task_share.html#task_share.Queue.clear">clear() (task_share.Queue method)</a>
+</li>
+      <li><a href="drivers.html#imu_driver.BNO055.CONFIG_MODE">CONFIG_MODE (imu_driver.BNO055 attribute)</a>
+</li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.courseGo">courseGo (task_fsm.task_fsm attribute)</a>
 </li>
   </ul></td>
@@ -214,16 +247,50 @@
   </ul></td>
 </tr></table>
 
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.heading">heading() (imu_driver.BNO055 method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    imu_driver
+
+      <ul>
+        <li><a href="drivers.html#module-imu_driver">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.IMU_MODE">IMU_MODE (imu_driver.BNO055 attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_fsm.html#task_fsm.task_fsm.leftMotorGo">leftMotorGo (task_fsm.task_fsm attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_fsm.html#task_fsm.task_fsm.leftSetpoint">leftSetpoint (task_fsm.task_fsm attribute)</a>
 </li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.lineCorr">lineCorr (task_fsm.task_fsm attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    linesensor
+
+      <ul>
+        <li><a href="drivers.html#module-linesensor">module</a>
+</li>
+      </ul></li>
+      <li><a href="drivers.html#linesensor.LineSensor">LineSensor (class in linesensor)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -233,11 +300,19 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_fsm.html#task_fsm.task_fsm.mode">mode (task_fsm.task_fsm attribute)</a>
 </li>
+      <li><a href="drivers.html#imu_driver.BNO055.mode">mode() (imu_driver.BNO055 method)</a>
+</li>
       <li>
     module
 
       <ul>
+        <li><a href="drivers.html#module-bumpsensor">bumpsensor</a>
+</li>
         <li><a href="drivers.html#module-encoder">encoder</a>
+</li>
+        <li><a href="drivers.html#module-imu_driver">imu_driver</a>
+</li>
+        <li><a href="drivers.html#module-linesensor">linesensor</a>
 </li>
         <li><a href="drivers.html#module-motor_driver">motor_driver</a>
 </li>
@@ -262,6 +337,10 @@
 
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.NDOF_MODE">NDOF_MODE (imu_driver.BNO055 attribute)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="task_share.html#task_share.Queue.num_in">num_in() (task_share.Queue method)</a>
 </li>
@@ -291,10 +370,22 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="task_fsm.html#task_fsm.task_fsm.rightMotorGo">rightMotorGo (task_fsm.task_fsm attribute)</a>
+      <li><a href="drivers.html#imu_driver.BNO055.read_angular_velocity">read_angular_velocity() (imu_driver.BNO055 method)</a>
+</li>
+      <li><a href="drivers.html#imu_driver.BNO055.read_calibration_coeffs">read_calibration_coeffs() (imu_driver.BNO055 method)</a>
+</li>
+      <li><a href="drivers.html#imu_driver.BNO055.read_euler">read_euler() (imu_driver.BNO055 method)</a>
+</li>
+      <li><a href="drivers.html#linesensor.LineSensor.read_norm">read_norm() (linesensor.LineSensor method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#linesensor.LineSensor.read_raw">read_raw() (linesensor.LineSensor method)</a>
+</li>
+      <li><a href="drivers.html#bumpsensor.BumpSensor.rearm">rearm() (bumpsensor.BumpSensor method)</a>
+</li>
+      <li><a href="task_fsm.html#task_fsm.task_fsm.rightMotorGo">rightMotorGo (task_fsm.task_fsm attribute)</a>
+</li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.rightSetpoint">rightSetpoint (task_fsm.task_fsm attribute)</a>
 </li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.run">run() (task_fsm.task_fsm method)</a>
@@ -313,14 +404,16 @@
       </ul></li>
       <li><a href="drivers.html#motor_driver.motor_driver.set_effort">set_effort() (motor_driver.motor_driver method)</a>
 </li>
+      <li><a href="drivers.html#imu_driver.BNO055.set_mode">set_mode() (imu_driver.BNO055 method)</a>
+</li>
       <li><a href="task_share.html#task_share.Share">Share (class in task_share)</a>
 </li>
       <li><a href="task_share.html#task_share.share_list">share_list (in module task_share)</a>
 </li>
-      <li><a href="task_share.html#task_share.show_all">show_all() (in module task_share)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="task_share.html#task_share.show_all">show_all() (in module task_share)</a>
+</li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.sL_meas">sL_meas (task_fsm.task_fsm attribute)</a>
 </li>
       <li><a href="task_fsm.html#task_fsm.task_fsm.sR_meas">sR_meas (task_fsm.task_fsm attribute)</a>
@@ -366,6 +459,22 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="drivers.html#encoder.encoder.update">update() (encoder.encoder method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.write_calibration_coeffs">write_calibration_coeffs() (imu_driver.BNO055 method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="drivers.html#imu_driver.BNO055.yaw_rate">yaw_rate() (imu_driver.BNO055 method)</a>
 </li>
   </ul></td>
 </tr></table>

@@ -24,7 +24,7 @@ def button_cb(line):
 
 def main():
     """
-    Initialize hardware, create shared variables and tasks, and run the scheduler.
+    Initialize hardware wiring, create shared variables and tasks, and run the scheduler.
 
     This function builds the full robot control system, including motors,
     encoders, line sensor, IMU, bump sensor, inter-task shares, and all

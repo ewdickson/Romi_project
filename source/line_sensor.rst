@@ -14,6 +14,11 @@ and compatibility with expected line width to choose the specific device we woul
 The sensor we selected for this project is the `Pololu QTRX-MD-07A Reflectance Sensor Array 
 <qtrx_sensor>`_. This is a 7-channel analog reflectance sensor with 8 mm spacing. 
 
+.. image:: _static/linesensor.jpg
+   :width: 80%
+   :align: center
+   :alt: Pololu QTRX-MD-07A Reflectance Sensor Array
+
 Sensor Justification 
 -------------------- 
 
@@ -40,11 +45,21 @@ line moves from one sensor to the next. Too much crossover reduces “spatial re
 adjacent sensors reading the same thing). Moderate crossover increases this resolution while 
 maintaining smooth transitions. 
 
+.. image:: _static/linesensor_mounting.jpg
+   :width: 80%
+   :align: center
+   :alt: LIne sensor mounting
+
 Wiring 
 ------ 
 
 The Pololu QTRX-MD-07A required 7 ADC-capable GPIO pins on the Nucleo (one for each sensor), as well as 
 +3.3V/GND. Each of the 7 pins on the Nucleo were configured as analog-to-digital (ADC) pins to 
 receive analog output from the sensor. Below is a wiring diagram for the line sensor. 
+
+.. image:: _static/linesensor_wiring.jpg
+   :width: 80%
+   :align: center
+   :alt: Line sensor wiring diagram
 
 .. _qtrx_sensor: https://www.pololu.com/product/4247

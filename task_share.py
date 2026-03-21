@@ -57,9 +57,6 @@ class BaseShare:
 class Queue(BaseShare):
     """
     Queue used to transfer buffered data from one task to another.
-
-    A Queue stores multiple values of one data type and can optionally
-    protect data transfers from corruption caused by interrupts.
     """
 
     ser_num = 0

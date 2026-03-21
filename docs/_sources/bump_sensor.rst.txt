@@ -14,6 +14,11 @@ It should be noted that we only used one sensor from the pair included in the pr
 as components were sourced from previous course materials. We thank Katherine Meezan 
 for providing the sensor used in this project.
 
+.. image:: _static/bumpsensor.jpg
+   :width: 80%
+   :align: center
+   :alt: Pololu Bumper Switch Set for Romi
+
 Sensor Justification
 --------------------
 
@@ -36,6 +41,11 @@ sensor directly over the front of Romi. However, we managed to position the sens
 that at its furthest of the three contact arms extended over the line sensor and chassis.
 This placement ensures that collisions during forward motion are reliably detected.
 
+.. image:: _static/bumpsensor_mounting.jpg
+   :width: 80%
+   :align: center
+   :alt: Bump sensor mounting
+
 Wiring
 ------
 
@@ -51,3 +61,8 @@ used to detect a bump event, allowing immediate response without continuous poll
 
 This configuration provides a simple and efficient interface for integrating contact 
 detection into the robot’s control system.
+
+.. image:: _static/bumpsensor_wiring.jpg
+   :width: 80%
+   :align: center
+   :alt: Bump sensor wiring

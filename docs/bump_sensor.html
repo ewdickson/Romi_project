@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Inertial Measurement Unit (IMU)" href="imu.html" />
+    <link rel="next" title="IMU and State Estimation" href="imu.html" />
     <link rel="prev" title="Line Sensor" href="line_sensor.html" /> 
 </head>
 
@@ -46,8 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="hardware_design.html">Hardware Design</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="romi_chassis.html">Romi Platforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors &amp; Encoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="line_sensor.html">Line Sensor</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Bump Sensor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sensor-justification">Sensor Justification</a></li>
@@ -55,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#wiring">Wiring</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imu.html">IMU and State Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wiring_diagram.html">Wiring Diagram</a></li>
 </ul>
 </li>
@@ -101,6 +100,8 @@ for short-range interaction tasks such as wall detection.</p>
 It should be noted that we only used one sensor from the pair included in the product,
 as components were sourced from previous course materials. We thank Katherine Meezan
 for providing the sensor used in this project.</p>
+<a class="reference internal image-reference" href="_static/bumpsensor.jpg"><img alt="Pololu Bumper Switch Set for Romi" class="align-center" src="_static/bumpsensor.jpg" style="width: 80%;" />
+</a>
 <section id="sensor-justification">
 <h2>Sensor Justification<a class="headerlink" href="#sensor-justification" title="Link to this heading"></a></h2>
 <p>A bump sensor was chosen due to its simplicity, reliability, and fast response time.
@@ -119,6 +120,8 @@ As this was the last piece of hardware to be mounted, it was difficult to center
 sensor directly over the front of Romi. However, we managed to position the sensor such
 that at its furthest of the three contact arms extended over the line sensor and chassis.
 This placement ensures that collisions during forward motion are reliably detected.</p>
+<a class="reference internal image-reference" href="_static/bumpsensor_mounting.jpg"><img alt="Bump sensor mounting" class="align-center" src="_static/bumpsensor_mounting.jpg" style="width: 80%;" />
+</a>
 </section>
 <section id="wiring">
 <h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
@@ -132,6 +135,8 @@ an internal pull-up resistor and interrupt capability. A falling edge interrupt 
 used to detect a bump event, allowing immediate response without continuous polling.</p>
 <p>This configuration provides a simple and efficient interface for integrating contact
 detection into the robot’s control system.</p>
+<a class="reference internal image-reference" href="_static/bumpsensor_wiring.jpg"><img alt="Bump sensor wiring" class="align-center" src="_static/bumpsensor_wiring.jpg" style="width: 80%;" />
+</a>
 </section>
 </section>
 
@@ -140,7 +145,7 @@ detection into the robot’s control system.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="line_sensor.html" class="btn btn-neutral float-left" title="Line Sensor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="imu.html" class="btn btn-neutral float-right" title="Inertial Measurement Unit (IMU)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="imu.html" class="btn btn-neutral float-right" title="IMU and State Estimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

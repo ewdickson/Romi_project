@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Bump Sensor" href="bump_sensor.html" />
-    <link rel="prev" title="Encoders" href="encoders.html" /> 
+    <link rel="prev" title="Motors &amp; Encoders" href="motors.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,8 +46,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="hardware_design.html">Hardware Design</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="romi_chassis.html">Romi Platforms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors &amp; Encoders</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Line Sensor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#sensor-justification">Sensor Justification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mounting">Mounting</a></li>
@@ -55,7 +54,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bump_sensor.html">Bump Sensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Measurement Unit (IMU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imu.html">IMU and State Estimation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="wiring_diagram.html">Wiring Diagram</a></li>
 </ul>
 </li>
@@ -100,6 +99,8 @@ analog sensors offer the best balance of simplicity and control performance.</p>
 <p>We then evaluated sensor interface, channel count and spacing, sensor height, channel crossover,
 and compatibility with expected line width to choose the specific device we would be working with.
 The sensor we selected for this project is the <a class="reference external" href="qtrx_sensor">Pololu QTRX-MD-07A Reflectance Sensor Array</a>. This is a 7-channel analog reflectance sensor with 8 mm spacing.</p>
+<a class="reference internal image-reference" href="_static/linesensor.jpg"><img alt="Pololu QTRX-MD-07A Reflectance Sensor Array" class="align-center" src="_static/linesensor.jpg" style="width: 80%;" />
+</a>
 <section id="sensor-justification">
 <h2>Sensor Justification<a class="headerlink" href="#sensor-justification" title="Link to this heading"></a></h2>
 <p>We determined 7 channels is best for line tracking in this application, as it provides the
@@ -123,12 +124,16 @@ produced some crossover, which is desirable. Less crossover means more abrupt tr
 line moves from one sensor to the next. Too much crossover reduces “spatial resolution” (i.e. most
 adjacent sensors reading the same thing). Moderate crossover increases this resolution while
 maintaining smooth transitions.</p>
+<a class="reference internal image-reference" href="_static/linesensor_mounting.jpg"><img alt="LIne sensor mounting" class="align-center" src="_static/linesensor_mounting.jpg" style="width: 80%;" />
+</a>
 </section>
 <section id="wiring">
 <h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
 <p>The Pololu QTRX-MD-07A required 7 ADC-capable GPIO pins on the Nucleo (one for each sensor), as well as
 +3.3V/GND. Each of the 7 pins on the Nucleo were configured as analog-to-digital (ADC) pins to
 receive analog output from the sensor. Below is a wiring diagram for the line sensor.</p>
+<a class="reference internal image-reference" href="_static/linesensor_wiring.jpg"><img alt="Line sensor wiring diagram" class="align-center" src="_static/linesensor_wiring.jpg" style="width: 80%;" />
+</a>
 </section>
 </section>
 
@@ -136,7 +141,7 @@ receive analog output from the sensor. Below is a wiring diagram for the line se
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="encoders.html" class="btn btn-neutral float-left" title="Encoders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="motors.html" class="btn btn-neutral float-left" title="Motors &amp; Encoders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="bump_sensor.html" class="btn btn-neutral float-right" title="Bump Sensor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -7,7 +7,6 @@ Hardware Design
    
    romi_chassis
    motors
-   encoders
    line_sensor
    bump_sensor
    imu
