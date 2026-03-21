@@ -53,7 +53,7 @@ D_STRAIGHTFIN = 0.38
 
 # The task_fsm class encapsulates the finite state machine logic for controlling the robot's behavior.
 class task_fsm:
-    '''Finite-state-machine task that coordinates robot behavior.'''
+    '''Finite-state-machine task that coordinates robot behavior live.'''
 
     def __init__(self,
                  courseGo,
