@@ -6,8 +6,6 @@
 ME405 Term Project
 ==================
 
-to update html = py -m sphinx -b html source build OR FOR MAC python3 -m sphinx -E -b html source build
-
 Project Summary
 ---------------
 
@@ -25,7 +23,10 @@ printed lab track primarily using line sensing and encoder feedback in combinati
 PI motor controllers. Below is our general strategy for progression through the track,
 broken up into "states" (See :doc:`task_fsm <task_fsm>`):
 
-
+.. image:: _static/taskplan.jpg
+   :width: 80%
+   :align: center
+   :alt: Track progression and states
 
 Repository
 ----------

@@ -1,5 +1,5 @@
 Romi Platforms
-============
+==============
 
 The platform provided to us was a mechanical structure and supporting electronics 
 that enable the robot to operate. This includes the chassis for physical support, 
