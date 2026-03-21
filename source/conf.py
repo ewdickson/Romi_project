@@ -22,13 +22,6 @@ MOCK_MODULES = [
     'utime',
     'ulab',
     'ulab.numpy',
-    'cotask',
-    'task_share',
-    'bumpsensor',
-    'linesensor',
-    'motor_driver',
-    'encoder',
-    'imu_driver',
 ]
 
 for mod_name in MOCK_MODULES:
