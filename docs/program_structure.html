@@ -46,15 +46,21 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Program Structure</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="drivers.html">Drivers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main.html">Main</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-architecture">Task Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finite-state-machine-navigation">Finite State Machine Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-system">Control System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system-behavior-in-final-implementation">System Behavior in Final Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drivers.html">Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_share.html">Share Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_user.html">User Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
@@ -86,6 +92,91 @@
              
   <section id="program-structure">
 <h1>Program Structure<a class="headerlink" href="#program-structure" title="Link to this heading"></a></h1>
+<p>The robot control software is structured as a cooperative multitasking system
+using a priority-based scheduler. Each major subsystem is implemented as an
+independent task, allowing sensing, control, and decision-making to occur
+concurrently. Tasks communicate using shared variables (Shares) and queues,
+which provide safe data exchange between tasks without data corruption.</p>
+<p>The main program initializes all hardware drivers (motors, encoders, line sensor,
+IMU, and bump sensor), constructs the required tasks, and schedules them to run
+periodically using a cooperative scheduler. Each task runs as a generator function
+and yields control back to the scheduler, enabling deterministic execution timing.</p>
+<section id="task-architecture">
+<h2>Task Architecture<a class="headerlink" href="#task-architecture" title="Link to this heading"></a></h2>
+<p>The system is composed of several key tasks:</p>
+<ul class="simple">
+<li><p><strong>Motor Tasks</strong>: Implement closed-loop PI control for each wheel, using encoder
+feedback to regulate velocity.</p></li>
+<li><p><strong>Line Sensor Task</strong>: Computes the line position and generates a correction signal
+for steering.</p></li>
+<li><p><strong>FSM Task</strong>: Acts as the high-level controller, determining robot behavior and
+transitions between states.</p></li>
+<li><p><strong>Bump Sensor Task</strong>: Detects collisions and triggers recovery behavior.</p></li>
+<li><p><strong>User Task</strong>: Handles user input (start/stop) and provides debugging output.</p></li>
+<li><p><strong>Observer Task</strong>: Handles IMU data and calibration (not used in final control).</p></li>
+</ul>
+<p>Each task operates independently but shares data through a centralized set of
+Share objects, enabling modular and scalable system design.</p>
+</section>
+<section id="finite-state-machine-navigation">
+<h2>Finite State Machine Navigation<a class="headerlink" href="#finite-state-machine-navigation" title="Link to this heading"></a></h2>
+<p>The overall behavior of the robot is governed by a finite state machine (FSM),
+which sequences the robot through the course. The FSM controls the robot by
+switching between different operating modes, including line following, open-loop
+motion, turning, and recovery.</p>
+<p>The robot begins in an idle state and transitions into line-following mode when
+the course is started. It then progresses through a series of states corresponding
+to different segments of the track, including:</p>
+<ul class="simple">
+<li><p>Straight line following</p></li>
+<li><p>Curved line following</p></li>
+<li><p>In-place turns (90°, 45°, 180°)</p></li>
+<li><p>Open-loop straight segments</p></li>
+<li><p>Bump detection and recovery maneuvers</p></li>
+</ul>
+<p>State transitions are primarily triggered by encoder-based distance thresholds,
+allowing the robot to move a precise distance before advancing to the next state.
+Additional transitions occur based on sensor events, such as detecting a bump.</p>
+<p>This structure enables deterministic navigation of the course while maintaining
+flexibility to handle disturbances such as collisions.</p>
+</section>
+<section id="control-system">
+<h2>Control System<a class="headerlink" href="#control-system" title="Link to this heading"></a></h2>
+<p>The control system consists of two main components: motor control and line-following control.</p>
+<a class="reference internal image-reference" href="_images/motorcontroller.jpg"><img alt="Control block diagram" class="align-center" src="_images/motorcontroller.jpg" style="width: 80%;" />
+</a>
+<p><strong>Motor Control (PI Controller)</strong></p>
+<p>Each motor is controlled using a proportional-integral (PI) controller that
+regulates wheel velocity. The controller compares the desired velocity setpoint
+to the measured velocity from the encoder and computes a motor effort command.
+This effort is applied through PWM signals to the motor driver.</p>
+<p>The PI controller improves tracking performance by reducing steady-state error
+and compensating for disturbances such as friction and load variations.</p>
+<p><strong>Line-Following Control</strong></p>
+<p>The line sensor task computes the position of the line relative to the robot
+using a centroid calculation. This position is multiplied by a steering gain
+to produce a correction term, which is applied to the motor setpoints:</p>
+<ul class="simple">
+<li><p>Left motor = base speed + correction</p></li>
+<li><p>Right motor = base speed − correction</p></li>
+</ul>
+<p>This differential control allows the robot to steer smoothly toward the line
+and maintain alignment during motion.</p>
+<p>Together, these control strategies enable stable and responsive motion throughout
+the course.</p>
+</section>
+<section id="system-behavior-in-final-implementation">
+<h2>System Behavior in Final Implementation<a class="headerlink" href="#system-behavior-in-final-implementation" title="Link to this heading"></a></h2>
+<p>In the final implementation, the robot relies on a combination of:</p>
+<ul class="simple">
+<li><p>Line sensor feedback for continuous path tracking</p></li>
+<li><p>Encoder measurements for distance-based state transitions</p></li>
+<li><p>Bump sensor input for event-driven recovery</p></li>
+</ul>
+<p>Although an observer task and IMU driver were implemented, state estimation was
+not used in the final control strategy. The simpler combination of line following
+and encoder-based navigation proved sufficiently robust for completing the course,
+while avoiding the additional complexity of tuning a model-based estimator.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -137,6 +228,7 @@
 </li>
 </ul>
 </div>
+</section>
 </section>
 
 

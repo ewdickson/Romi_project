@@ -30,6 +30,7 @@ Demonstration Video
            allowfullscreen>
    </iframe>
 
+
 Challenges and Lessons Learned
 ------------------------------
 
@@ -69,7 +70,3 @@ we got rid of a lot of Queues that we inherited from previous labs, and either c
 them out or turned them into Shares, as we really only needed immediate data for control.
 Additionally, we removed a lot of attributes that didn't need to be attributes in the 
 FSM task.
-
-
-
-

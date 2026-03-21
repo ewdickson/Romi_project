@@ -46,18 +46,20 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="program_structure.html">Program Structure</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="drivers.html">Drivers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main.html">Main</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Observer Task</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#task_observer.task_observer"><code class="docutils literal notranslate"><span class="pre">task_observer</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#task_observer.task_observer.__init__"><code class="docutils literal notranslate"><span class="pre">task_observer.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_observer.task_observer.run"><code class="docutils literal notranslate"><span class="pre">task_observer.run()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#task-architecture">Task Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#finite-state-machine-navigation">Finite State Machine Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#control-system">Control System</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="program_structure.html#system-behavior-in-final-implementation">System Behavior in Final Implementation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="drivers.html">Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_share.html">Share Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_user.html">User Task</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Observer Task</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_observer.task_observer"><code class="docutils literal notranslate"><span class="pre">task_observer</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -92,9 +94,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-task_observer">
-<span id="observer-task"></span><h1>Observer Task<a class="headerlink" href="#module-task_observer" title="Link to this heading"></a></h1>
-<dl class="py class">
+  <section id="observer-task">
+<h1>Observer Task<a class="headerlink" href="#observer-task" title="Link to this heading"></a></h1>
+<p>The observer task manages IMU startup and calibration while also publishing
+orientation-related measurements to the rest of the system. It loads or saves
+BNO055 calibration data, ensures the IMU is in the correct mode, and
+continuously updates shared heading and yaw-rate values during operation.
+This task supports state estimation by turning the raw IMU into a ready-to-use
+sensing component that the robot can rely on during motion.</p>
+<dl class="py class" id="module-task_observer">
 <dt class="sig sig-object py" id="task_observer.task_observer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_observer.</span></span><span class="sig-name descname"><span class="pre">task_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imu</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_dot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bno055_cal.bin'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_observer.task_observer" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>

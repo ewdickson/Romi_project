@@ -46,19 +46,25 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="program_structure.html">Program Structure</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="drivers.html">Drivers</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Main</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#main.button_cb"><code class="docutils literal notranslate"><span class="pre">button_cb()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#task-architecture">Task Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#finite-state-machine-navigation">Finite State Machine Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#control-system">Control System</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="program_structure.html#system-behavior-in-final-implementation">System Behavior in Final Implementation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="drivers.html">Drivers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#main.button_cb"><code class="docutils literal notranslate"><span class="pre">button_cb()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#main.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_share.html">Share Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_user.html">User Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
@@ -89,9 +95,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-main">
-<span id="main"></span><h1>Main<a class="headerlink" href="#module-main" title="Link to this heading"></a></h1>
-<dl class="py function">
+  <section id="main">
+<h1>Main<a class="headerlink" href="#main" title="Link to this heading"></a></h1>
+<p>The main file serves as the top-level integration point for the entire robot control
+system. It initializes all hardware drivers, creates the shared variables used for
+communication between tasks, instantiates each cooperative task, and adds them to
+the scheduler. Once setup is complete, it enters the main scheduling loop, allowing
+the motor control, line sensing, bump detection, observer, user interface, and finite
+state machine tasks to work together as one coordinated program.</p>
+<dl class="py function" id="module-main">
 <dt class="sig sig-object py" id="main.button_cb">
 <span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">button_cb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main.button_cb" title="Link to this definition"></a></dt>
 <dd><p>Toggle the course start flag when the user button is pressed.</p>

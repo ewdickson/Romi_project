@@ -46,41 +46,24 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="program_structure.html">Program Structure</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="drivers.html">Drivers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main.html">Main</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Finite State Machine Tasks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#task_fsm.task_fsm"><code class="docutils literal notranslate"><span class="pre">task_fsm</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.__init__"><code class="docutils literal notranslate"><span class="pre">task_fsm.__init__()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._capture_refs"><code class="docutils literal notranslate"><span class="pre">task_fsm._capture_refs()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._dist_since_left"><code class="docutils literal notranslate"><span class="pre">task_fsm._dist_since_left()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._dist_since_right"><code class="docutils literal notranslate"><span class="pre">task_fsm._dist_since_right()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm._turn_wheel_arc_inplace"><code class="docutils literal notranslate"><span class="pre">task_fsm._turn_wheel_arc_inplace()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.bumpFlag"><code class="docutils literal notranslate"><span class="pre">task_fsm.bumpFlag</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.courseGo"><code class="docutils literal notranslate"><span class="pre">task_fsm.courseGo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.fsmState"><code class="docutils literal notranslate"><span class="pre">task_fsm.fsmState</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.leftMotorGo"><code class="docutils literal notranslate"><span class="pre">task_fsm.leftMotorGo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.leftSetpoint"><code class="docutils literal notranslate"><span class="pre">task_fsm.leftSetpoint</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.lineCorr"><code class="docutils literal notranslate"><span class="pre">task_fsm.lineCorr</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.mode"><code class="docutils literal notranslate"><span class="pre">task_fsm.mode</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.rightMotorGo"><code class="docutils literal notranslate"><span class="pre">task_fsm.rightMotorGo</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.rightSetpoint"><code class="docutils literal notranslate"><span class="pre">task_fsm.rightSetpoint</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.run"><code class="docutils literal notranslate"><span class="pre">task_fsm.run()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.sL_meas"><code class="docutils literal notranslate"><span class="pre">task_fsm.sL_meas</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.sR_meas"><code class="docutils literal notranslate"><span class="pre">task_fsm.sR_meas</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.start_sL"><code class="docutils literal notranslate"><span class="pre">task_fsm.start_sL</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.start_sR"><code class="docutils literal notranslate"><span class="pre">task_fsm.start_sR</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.state_entry"><code class="docutils literal notranslate"><span class="pre">task_fsm.state_entry</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm.steerGain"><code class="docutils literal notranslate"><span class="pre">task_fsm.steerGain</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#task-architecture">Task Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#finite-state-machine-navigation">Finite State Machine Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="program_structure.html#control-system">Control System</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="program_structure.html#system-behavior-in-final-implementation">System Behavior in Final Implementation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="drivers.html">Drivers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main.html">Main</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_share.html">Share Task</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Finite State Machine Tasks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_fsm.task_fsm"><code class="docutils literal notranslate"><span class="pre">task_fsm</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_user.html">User Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
-<li class="toctree-l2"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="results.html">Results</a></li>
@@ -111,9 +94,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-task_fsm">
-<span id="finite-state-machine-tasks"></span><h1>Finite State Machine Tasks<a class="headerlink" href="#module-task_fsm" title="Link to this heading"></a></h1>
-<dl class="py class">
+  <section id="finite-state-machine-tasks">
+<h1>Finite State Machine Tasks<a class="headerlink" href="#finite-state-machine-tasks" title="Link to this heading"></a></h1>
+<p>The finite state machine task is the high-level decision-making task that coordinates
+the robot’s overall behavior through the course. It advances through a sequence of
+motion states such as line following, straight driving, turns, bump handling,
+recovery, and final stopping, while updating the motor setpoints and operating modes
+needed for each phase. This task acts as the “mastermind” of the project by combining
+sensor-based transitions and distance-based logic into one organized control flow.</p>
+<dl class="py class" id="module-task_fsm">
 <dt class="sig sig-object py" id="task_fsm.task_fsm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_fsm.</span></span><span class="sig-name descname"><span class="pre">task_fsm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sL_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sR_meas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCorr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steerGain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bumpFlag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsmState</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightSetpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftMotorGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightMotorGo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_fsm.task_fsm" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
