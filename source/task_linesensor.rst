@@ -1,7 +1,7 @@
 Line Sensor Task
 ================
 
-.. automodule:: line_sensor
+.. automodule:: task_linesensor
    :members:
-   :undoc-members:
+   :special-members: __init__
    :show-inheritance:

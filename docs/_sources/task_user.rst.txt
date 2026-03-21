@@ -3,5 +3,5 @@ User Task
 
 .. automodule:: task_user
    :members:
-   :undoc-members:
+   :special-members: __init__
    :show-inheritance:

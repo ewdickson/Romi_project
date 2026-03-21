@@ -70,10 +70,10 @@ IMU was not used as part of the robot’s operational control.
 Mounting 
 -------- 
 
-The IMU was mounted securely to the chassis using available mounting hardware, with 
-care taken to align the sensor axes with the robot frame. Proper alignment is important 
-to ensure that heading and angular velocity measurements correspond correctly to the 
-robot’s motion.
+The IMU was mounted securely to the chassis using screws and nuts, with 
+care taken to align the sensor axes with the frame, as close to the center of Romi as 
+possible. Proper alignment is important to ensure that heading and angular velocity 
+measurements correspond correctly to the robot’s motion.
 
 Wiring 
 ------ 

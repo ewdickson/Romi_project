@@ -46,16 +46,17 @@
 <li class="toctree-l1"><a class="reference internal" href="hardware_design.html">Hardware Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="program_structure.html">Program Structure</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Results</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#challenges-and-lessons-learned">Challenges and Lessons Learned</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#consistency">Consistency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#unusually-fast-runs">Unusually Fast Runs</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#final-times">Final Times</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#demonstration-videos">Demonstration Videos</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#run-1">Run 1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-2">Run 2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#run-3">Run 3</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#challenges-and-lessons-learned">Challenges and Lessons Learned</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#consistency">Consistency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unusually-fast-runs">Unusually Fast Runs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory">Memory</a></li>
 </ul>
 </li>
 </ul>
@@ -88,36 +89,6 @@
              
   <section id="results">
 <h1>Results<a class="headerlink" href="#results" title="Link to this heading"></a></h1>
-<section id="challenges-and-lessons-learned">
-<h2>Challenges and Lessons Learned<a class="headerlink" href="#challenges-and-lessons-learned" title="Link to this heading"></a></h2>
-<section id="consistency">
-<h3>Consistency<a class="headerlink" href="#consistency" title="Link to this heading"></a></h3>
-<p>The main challenge we faced was consistency, for two different reasons. The first is
-that we practiced a lot on the track that had poor reflectance. For about 6 hours
-the day before the final runs, we tuned our rotations and distances over and over, but
-it would never be consistent for long. We didn’t know it was the track, since our line
-following works fine on both and we defaulted to practicing on the “bad” one so as to
-not have to wait in testing lines. Finally, we tried it on the actual track and it
-worked far more consistently. We think that maybe the line following was decent on both
-to the eye, but created enough variable heading coming off the first curve that would
-mess up parking garage navigation.</p>
-<p>The second reason is that all of our states are dependent on encoder counts. This means
-that if wheel slip and starting positions change the encoder readings even a little bit,
-down the line that could compound into the difference of hitting a garage pole or not.
-Perhaps a heading controller would have corrected this, but would introduce higher
-complexity to the project without fully eliminating drift.</p>
-</section>
-<section id="unusually-fast-runs">
-<h3>Unusually Fast Runs<a class="headerlink" href="#unusually-fast-runs" title="Link to this heading"></a></h3>
-<p>Another challenge was that our Romi would sometimes run the entire track at much higher
-setpoints than prescribed. This would ususally happen after waiting a while to do a
-subsequent run with Romi still on. We adjusted our code to eliminate integral windup, but
-to no avail. The increased speed would last for the entire run, causing more slip and
-reducing consistency. Since it would never “wind down”, we think it is a different issue.
-For some reason, we were able to solve this by immediately running Romi again after a run,
-or power cycling.</p>
-</section>
-</section>
 <section id="final-times">
 <h2>Final Times<a class="headerlink" href="#final-times" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
@@ -160,6 +131,45 @@ or power cycling.</p>
 <video width="560" controls>
   <source src="_static/run3.mp4" type="video/mp4">
 </video></section>
+</section>
+<section id="challenges-and-lessons-learned">
+<h2>Challenges and Lessons Learned<a class="headerlink" href="#challenges-and-lessons-learned" title="Link to this heading"></a></h2>
+<section id="consistency">
+<h3>Consistency<a class="headerlink" href="#consistency" title="Link to this heading"></a></h3>
+<p>The main challenge we faced was consistency, for two different reasons. The first is
+that we practiced a lot on the track that had poor reflectance. For about 6 hours
+the day before the final runs, we tuned our rotations and distances over and over, but
+it would never be consistent for long. We didn’t know it was the track, since our line
+following works fine on both and we defaulted to practicing on the “bad” one so as to
+not have to wait in testing lines. Finally, we tried it on the actual track and it
+worked far more consistently. We think that maybe the line following was decent on both
+to the eye, but created enough variable heading coming off the first curve that would
+mess up parking garage navigation.</p>
+<p>The second reason is that all of our states are dependent on encoder counts. This means
+that if wheel slip and starting positions change the encoder readings even a little bit,
+down the line that could compound into the difference of hitting a garage pole or not.
+Perhaps a heading controller would have corrected this, but would introduce higher
+complexity to the project without fully eliminating drift.</p>
+</section>
+<section id="unusually-fast-runs">
+<h3>Unusually Fast Runs<a class="headerlink" href="#unusually-fast-runs" title="Link to this heading"></a></h3>
+<p>Another challenge was that our Romi would sometimes run the entire track at much higher
+setpoints than prescribed. This would ususally happen after waiting a while to do a
+subsequent run with Romi still on. We adjusted our code to eliminate integral windup, but
+to no avail. The increased speed would last for the entire run, causing more slip and
+reducing consistency. Since it would never “wind down”, we think it is a different issue.
+For some reason, we were able to solve this by immediately running Romi again after a run,
+or power cycling.</p>
+</section>
+<section id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Link to this heading"></a></h3>
+<p>The last significant challenge that we faced was running out of memory. At times, this
+prevented us from adding states or variables and being able to run our code. To fix this,
+we got rid of a lot of Queues that we inherited from previous labs, and either commented
+them out or turned them into Shares, as we really only needed immediate data for control.
+Additionally, we removed a lot of attributes that didn’t need to be attributes in the
+FSM task.</p>
+</section>
 </section>
 </section>
 

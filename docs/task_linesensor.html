@@ -51,7 +51,14 @@
 <li class="toctree-l2"><a class="reference internal" href="task_share.html">Share Task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="task_fsm.html">Finite State Machine Tasks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="task_motor.html">Motor Task</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Line Sensor Task</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Line Sensor Task</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task_linesensor.task_linesensor"><code class="docutils literal notranslate"><span class="pre">task_linesensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_linesensor.task_linesensor.__init__"><code class="docutils literal notranslate"><span class="pre">task_linesensor.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task_linesensor.task_linesensor.run"><code class="docutils literal notranslate"><span class="pre">task_linesensor.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="task_user.html">User Task</a></li>
 <li class="toctree-l2"><a class="reference internal" href="task_observer.html">Observer Task</a></li>
@@ -85,8 +92,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="line-sensor-task">
-<h1>Line Sensor Task<a class="headerlink" href="#line-sensor-task" title="Link to this heading"></a></h1>
+  <section id="module-task_linesensor">
+<span id="line-sensor-task"></span><h1>Line Sensor Task<a class="headerlink" href="#module-task_linesensor" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_linesensor.task_linesensor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_linesensor.</span></span><span class="sig-name descname"><span class="pre">task_linesensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linesensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steerGain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCorr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_linesensor.task_linesensor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Task that reads the line sensor and publishes a steering correction.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="task_linesensor.task_linesensor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linesensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steerGain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineCorr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_linesensor.task_linesensor.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the line sensor task.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>linesensor: LineSensor object used to compute the centroid.
+leftGo: Shared flag indicating whether the left motor is active.
+rightGo: Shared flag indicating whether the right motor is active.
+steerGain: Shared steering gain used to scale centroid error.
+lineCorr: Shared output correction value for line following.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_linesensor.task_linesensor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_linesensor.task_linesensor.run" title="Link to this definition"></a></dt>
+<dd><p>Run one iteration of the line sensor task.</p>
+<p>This generator monitors whether the robot is actively driving, reads
+the line centroid when running, and publishes a steering correction
+based on the centroid and steering gain.</p>
+<dl class="simple">
+<dt>Yields:</dt><dd><p>int: The current state of the line sensor task.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
 

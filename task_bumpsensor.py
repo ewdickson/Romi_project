@@ -6,8 +6,19 @@ from time import ticks_us, ticks_diff
 S0_INIT = micropython.const(0)
 S1_RUN  = micropython.const(1)
 
+
 class task_bumpsensor:
+    """Task that monitors the bump sensor and publishes a debounced bump flag."""
+
     def __init__(self, bumpsensor, bumpFlag, lockout_us=30000):
+        """
+        Initialize the bump sensor task.
+
+        Args:
+            bumpsensor: BumpSensor driver object.
+            bumpFlag: Shared flag used to notify other tasks of a bump event.
+            lockout_us: Debounce lockout time in microseconds after a trigger.
+        """
         self.state = S0_INIT
         self.bumpsensor = bumpsensor
         self.bumpFlag = bumpFlag
@@ -17,6 +28,16 @@ class task_bumpsensor:
         self._tstart = 0
 
     def run(self):
+        """
+        Run one iteration of the bump sensor task.
+
+        This generator watches for pending bump events from the interrupt-driven
+        bump sensor, sets the shared bump flag, and applies a lockout period to
+        prevent repeated triggers from switch bounce.
+
+        Yields:
+            int: The current state of the bump sensor task.
+        """
         while True:
 
             if self.state == S0_INIT:

@@ -149,16 +149,16 @@ IMU was not used as part of the robot’s operational control.</p>
 </section>
 <section id="mounting">
 <h2>Mounting<a class="headerlink" href="#mounting" title="Link to this heading"></a></h2>
-<p>The IMU was mounted securely to the chassis using available mounting hardware, with
-care taken to align the sensor axes with the robot frame. Proper alignment is important
-to ensure that heading and angular velocity measurements correspond correctly to the
-robot’s motion.</p>
+<p>The IMU was mounted securely to the chassis using screws and nuts, with
+care taken to align the sensor axes with the frame, as close to the center of Romi as
+possible. Proper alignment is important to ensure that heading and angular velocity
+measurements correspond correctly to the robot’s motion.</p>
 </section>
 <section id="wiring">
 <h2>Wiring<a class="headerlink" href="#wiring" title="Link to this heading"></a></h2>
 <p>The BNO055 communicates with the Nucleo using the I²C protocol. The following
 connections were used:</p>
-<a class="reference internal image-reference" href="_static/imu_wiring.jpg"><img alt="Robot on the track" class="align-center" src="_static/imu_wiring.jpg" style="width: 80%;" />
+<a class="reference internal image-reference" href="_images/imu_wiring.jpg"><img alt="Robot on the track" class="align-center" src="_images/imu_wiring.jpg" style="width: 80%;" />
 </a>
 <p>The Nucleo acts as the controller on the I²C bus, generating the clock signal and
 initiating communication, while the IMU responds as a peripheral device. This

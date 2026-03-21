@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="task_bumpsensor.html">Bump Sensor Task</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">User Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task_user.task_user"><code class="docutils literal notranslate"><span class="pre">task_user</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_user.task_user.__init__"><code class="docutils literal notranslate"><span class="pre">task_user.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_user.task_user.run"><code class="docutils literal notranslate"><span class="pre">task_user.run()</span></code></a></li>
 </ul>
 </li>
@@ -93,16 +94,34 @@
              
   <section id="module-task_user">
 <span id="user-task"></span><h1>User Task<a class="headerlink" href="#module-task_user" title="Link to this heading"></a></h1>
-<p>This file demonstrates an example UI task using a custom class with a
-run method implemented as a generator</p>
+<p>User interface task for starting the course and reporting FSM state.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="task_user.task_user">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_user.</span></span><span class="sig-name descname"><span class="pre">task_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsmState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_user.task_user" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Task that provides a simple serial user interface for course control.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="task_user.task_user.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courseGo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fsmState</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_user.task_user.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the user task.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>courseGo: Shared flag used to start or stop the course.
+fsmState: Share containing the current FSM state.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="task_user.task_user.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_user.task_user.run" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Run one iteration of the user interface task.</p>
+<p>This generator prints startup messages, reports when the course begins
+or stops, and displays FSM state changes over the serial connection.</p>
+<dl class="simple">
+<dt>Yields:</dt><dd><p>int: The current state of the user task.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

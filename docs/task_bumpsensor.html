@@ -54,6 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="task_linesensor.html">Line Sensor Task</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Bump Sensor Task</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task_bumpsensor.task_bumpsensor"><code class="docutils literal notranslate"><span class="pre">task_bumpsensor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task_bumpsensor.task_bumpsensor.__init__"><code class="docutils literal notranslate"><span class="pre">task_bumpsensor.__init__()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task_bumpsensor.task_bumpsensor.run"><code class="docutils literal notranslate"><span class="pre">task_bumpsensor.run()</span></code></a></li>
 </ul>
 </li>
@@ -97,10 +98,31 @@
 <dt class="sig sig-object py" id="task_bumpsensor.task_bumpsensor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_bumpsensor.</span></span><span class="sig-name descname"><span class="pre">task_bumpsensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bumpsensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bumpFlag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lockout_us</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_bumpsensor.task_bumpsensor" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Task that monitors the bump sensor and publishes a debounced bump flag.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="task_bumpsensor.task_bumpsensor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bumpsensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bumpFlag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lockout_us</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_bumpsensor.task_bumpsensor.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize the bump sensor task.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>bumpsensor: BumpSensor driver object.
+bumpFlag: Shared flag used to notify other tasks of a bump event.
+lockout_us: Debounce lockout time in microseconds after a trigger.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="task_bumpsensor.task_bumpsensor.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#task_bumpsensor.task_bumpsensor.run" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Run one iteration of the bump sensor task.</p>
+<p>This generator watches for pending bump events from the interrupt-driven
+bump sensor, sets the shared bump flag, and applies a lockout period to
+prevent repeated triggers from switch bounce.</p>
+<dl class="simple">
+<dt>Yields:</dt><dd><p>int: The current state of the bump sensor task.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

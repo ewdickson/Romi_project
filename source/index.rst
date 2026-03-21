@@ -13,14 +13,19 @@ Project Summary
 
 This project is an autonomous line-following robot designed for the ME405 term project.
 Depending on track position, the robot detects and follows printed lines, naviagates 
-predetermined paths, or recovers from bumping a wall.
+predetermined paths, or recovers from bumping a wall. The goal is to complete the track 
+in the minimum amount of time possible. Romi can earn -4 seconds for moving the cups 
+out of the circles, and is penalized +2 points for hitting any ping pong balls. 
 
 General Strategy
 ----------------
 
-Our team designed and built a robot capable (maybe) of completing repeated time trials on the
+Our team designed and built a robot capable of completing repeated time trials on the
 printed lab track primarily using line sensing and encoder feedback in combination with
-PI motor controllers.
+PI motor controllers. Below is our general strategy for progression through the track,
+broken up into "states" (See :doc:`task_fsm <task_fsm>`):
+
+
 
 Repository
 ----------

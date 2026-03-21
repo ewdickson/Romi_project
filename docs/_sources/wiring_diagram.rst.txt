@@ -146,7 +146,7 @@ User Button
 Diagram
 -------
 
-.. image:: _static/ME405_wiring.jpg
+.. image:: _static/ME405TP_wiring.jpg
    :width: 80%
    :align: center
    :alt: Robot on the track
